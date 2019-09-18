@@ -1,4 +1,4 @@
-package eppm.cf.emcdemo.emcdemo;
+package eppm.cf.emcdemo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,4 +1,4 @@
-package eppm.cf.emcdemo.emcdemo;
+package eppm.cf.emcdemo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
