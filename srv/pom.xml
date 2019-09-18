@@ -19,6 +19,7 @@
 		<java.version>1.8</java.version>
 		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
 		<junit.jupiter.version>5.5.1</junit.jupiter.version>
+		<version.xbem.client>2.0.1</version.xbem.client>
 	</properties>
 
 	<dependencies>
@@ -77,6 +78,25 @@
 			<artifactId>odatav2-prov</artifactId>
 			<version>1.33.0</version>
 		</dependency>
+
+		<!-- Messaging client related dependencies -->
+        <dependency>
+            <groupId>com.sap.cloud.servicesdk.xbem</groupId>
+            <artifactId>emjapi-connector-sap-cp</artifactId>
+            <version>${version.xbem.client}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sap.cloud.servicesdk.xbem</groupId>
+            <artifactId>emjapi-core</artifactId>
+            <version>${version.xbem.client}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sap.cloud.servicesdk.xbem</groupId>
+            <artifactId>emjapi-extension-sap-cp-jms</artifactId>
+            <version>${version.xbem.client}</version>
+        </dependency>
 	</dependencies>
 
 	<build>
