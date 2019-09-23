@@ -13,21 +13,21 @@ import java.util.Collections;
 
 public class EmcDemoProjectEvent extends EmcDemoMsgEvent<EmcDemoProjectEvent.Payload>  {
 
-    public static final String JSON_TYPE_ID_CREATED = "BO.BusinessPartner.Created";
-	public static final String JSON_TYPE_ID_CHANGED = "BO.BusinessPartner.Changed";
+//  public static final String JSON_TYPE_ID_CREATED = "BO.BusinessPartner.Created";
+//	public static final String JSON_TYPE_ID_CHANGED = "BO.BusinessPartner.Changed";
 
 	/**
 	 * Example JSON object:
 	 *
-	 * {"KEY":[{"BUSINESSPARTNER":"9980021470"}]}}
+	 * {"KEY":[{"PROJECTID":"9980021470"}]}}
 	 *
 	 */
 	public static class Payload {
 
-		public static class BusinessPartnerKey {
+		public static class ProjectID {
 			@NotNull
-			@JsonProperty("BUSINESSPARTNER")
-			protected String businessPartnerKey;
+			@JsonProperty("PROJECTID")
+			protected String projectID;
 
 			@Override
 			public String toString() {
@@ -40,16 +40,16 @@ public class EmcDemoProjectEvent extends EmcDemoMsgEvent<EmcDemoProjectEvent.Pay
 		@NotNull
 		@Size(min = 1, max = 1)
 		@JsonProperty("KEY")
-		protected Collection<@NotNull BusinessPartnerKey> keys;
+		protected Collection<@NotNull ProjectID> keys;
 
-		public String getBusinessPartnerKey() {
-			return keys.iterator().next().businessPartnerKey;
+		public String getProjectKey() {
+			return keys.iterator().next().projectID;
 		}
 
-		public void setBusinessPartnerKey(String businessPartnerKey) {
-			final BusinessPartnerKey key = new BusinessPartnerKey();
-			key.businessPartnerKey = businessPartnerKey;
-			keys = Collections.singletonList(key);
+		public void setProjectKey(String projectID) {
+			final ProjectID id = new ProjectID();
+			id.projectID = projectID;
+			keys = Collections.singletonList(id);
 		}
 
 		@Override
