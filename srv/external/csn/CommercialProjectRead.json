@@ -1,0 +1,398 @@
+{
+    "definitions": {
+        "CPD_SC_EXTERNAL_SERVICES_SRV.Project": {
+            "kind": "entity",
+            "@cds.persistence.skip": true,
+            "elements": {
+                "ProjectID": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 40
+                },
+                "RestrictTimePosting": {
+                    "type": "cds.String",
+                    "length": 1
+                },
+                "ChangedBy": {
+                    "type": "cds.String",
+                    "length": 12
+                },
+                "ProfitCenter": {
+                    "type": "cds.String",
+                    "length": 10
+                },
+                "ChangedOn": {
+                    "type": "cds.Timestamp"
+                },
+                "ProfitCenterName": {
+                    "type": "cds.String",
+                    "length": 20
+                },
+                "ProjectName": {
+                    "type": "cds.String",
+                    "length": 40
+                },
+                "ProjectStage": {
+                    "type": "cds.String",
+                    "length": 4
+                },
+                "StageDesc": {
+                    "type": "cds.String",
+                    "length": 40
+                },
+                "StartDate": {
+                    "type": "cds.Timestamp"
+                },
+                "EndDate": {
+                    "type": "cds.Timestamp"
+                },
+                "Customer": {
+                    "type": "cds.String",
+                    "length": 10
+                },
+                "CustomerName": {
+                    "type": "cds.String",
+                    "length": 166
+                },
+                "ProjManagerId": {
+                    "type": "cds.String",
+                    "length": 8
+                },
+                "ProjManagerName": {
+                    "type": "cds.String",
+                    "length": 80
+                },
+                "ProjAccountantId": {
+                    "type": "cds.String",
+                    "length": 8
+                },
+                "ProjAccountantName": {
+                    "type": "cds.String",
+                    "length": 80
+                },
+                "ProjControllerId": {
+                    "type": "cds.String",
+                    "length": 8
+                },
+                "ProjControllerName": {
+                    "type": "cds.String",
+                    "length": 80
+                },
+                "ProjPartnerId": {
+                    "type": "cds.String",
+                    "length": 8
+                },
+                "ProjPartnerName": {
+                    "type": "cds.String",
+                    "length": 80
+                },
+                "CostCenter": {
+                    "type": "cds.String",
+                    "length": 10
+                },
+                "CostCenterName": {
+                    "type": "cds.String",
+                    "length": 20
+                },
+                "ProjectCategory": {
+                    "type": "cds.String",
+                    "length": 1
+                },
+                "Currency": {
+                    "type": "cds.String",
+                    "length": 5
+                },
+                "Currencyname": {
+                    "type": "cds.String",
+                    "length": 40
+                },
+                "OrgID": {
+                    "type": "cds.String",
+                    "length": 5
+                },
+                "OrgDesc": {
+                    "type": "cds.String",
+                    "length": 40
+                },
+                "Confidential": {
+                    "type": "cds.String",
+                    "length": 1
+                },
+                "WorkpackageSet": {
+                    "type": "cds.Association",
+                    "target": "CPD_SC_EXTERNAL_SERVICES_SRV.Workpackage"
+                }
+            }
+        },
+        "CPD_SC_EXTERNAL_SERVICES_SRV.Workpackage": {
+            "kind": "entity",
+            "@cds.persistence.skip": true,
+            "elements": {
+                "WorkPackageID": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 50
+                },
+                "WorkPackageUnitText": {
+                    "type": "cds.String",
+                    "length": 40
+                },
+                "WorkPackageType": {
+                    "type": "cds.String",
+                    "length": 1
+                },
+                "UnitOfMeasure": {
+                    "type": "cds.String",
+                    "length": 30
+                },
+                "Quantity": {
+                    "type": "cds.String",
+                    "length": 15
+                },
+                "ChangedOn": {
+                    "type": "cds.Timestamp"
+                },
+                "ProjectID": {
+                    "type": "cds.String",
+                    "length": 40
+                },
+                "ChangedBy": {
+                    "type": "cds.String",
+                    "length": 12
+                },
+                "WorkPackageName": {
+                    "type": "cds.String",
+                    "length": 60
+                },
+                "WPStartDate": {
+                    "type": "cds.Timestamp"
+                },
+                "WPEndDate": {
+                    "type": "cds.Timestamp"
+                },
+                "ProjectName": {
+                    "type": "cds.String",
+                    "length": 40
+                },
+                "WorkItemSet": {
+                    "type": "cds.Association",
+                    "target": "CPD_SC_EXTERNAL_SERVICES_SRV.WorkItem"
+                },
+                "PlanDataSet": {
+                    "type": "cds.Association",
+                    "target": "CPD_SC_EXTERNAL_SERVICES_SRV.PlanData"
+                }
+            }
+        },
+        "CPD_SC_EXTERNAL_SERVICES_SRV.PlanData": {
+            "kind": "entity",
+            "@cds.persistence.skip": true,
+            "elements": {
+                "ProjectID": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 40
+                },
+                "ResType": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 4
+                },
+                "WorkPackageID": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 50
+                },
+                "ResourceId": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 40
+                },
+                "Version": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 28
+                },
+                "Employee": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 8
+                },
+                "Confirmed": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 1
+                },
+                "WorkitemId": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 10
+                },
+                "DelvryServOrg": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 5
+                },
+                "BillingControlCategory": {
+                    "type": "cds.String",
+                    "length": 8
+                },
+                "BillingControlCategoryID": {
+                    "type": "cds.String",
+                    "length": 8
+                },
+                "EmployeeName": {
+                    "type": "cds.LargeString"
+                },
+                "Wpname": {
+                    "type": "cds.String",
+                    "length": 60
+                },
+                "ResTypeText": {
+                    "type": "cds.LargeString"
+                },
+                "ResourceText": {
+                    "type": "cds.LargeString"
+                },
+                "Uom": {
+                    "type": "cds.String",
+                    "length": 3
+                },
+                "Period": {
+                    "type": "cds.String",
+                    "length": 3
+                },
+                "FcYear": {
+                    "type": "cds.String",
+                    "length": 4
+                },
+                "WorkitemName": {
+                    "type": "cds.LargeString"
+                },
+                "Effort": {
+                    "type": "cds.Decimal",
+                    "precision": 15,
+                    "scale": 3
+                },
+                "DelvryServOrgT": {
+                    "type": "cds.LargeString"
+                },
+                "ToStaffData": {
+                    "type": "cds.Association",
+                    "target": "CPD_SC_EXTERNAL_SERVICES_SRV.StaffingData"
+                }
+            }
+        },
+        "CPD_SC_EXTERNAL_SERVICES_SRV.WorkItem": {
+            "kind": "entity",
+            "@cds.persistence.skip": true,
+            "elements": {
+                "Workitem": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 10
+                },
+                "WorkpackageID": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 50
+                },
+                "Workitemname": {
+                    "type": "cds.String",
+                    "length": 40
+                },
+                "Workitemisinactive": {
+                    "type": "cds.String",
+                    "length": 1
+                }
+            }
+        },
+        "CPD_SC_EXTERNAL_SERVICES_SRV.StaffingData": {
+            "kind": "entity",
+            "@cds.persistence.skip": true,
+            "elements": {
+                "ProjectID": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 40
+                },
+                "WorkPackageID": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 50
+                },
+                "ResType": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 4
+                },
+                "ResourceId": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 40
+                },
+                "WorkitemId": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 10
+                },
+                "BillingControlCategory": {
+                    "type": "cds.String",
+                    "length": 60
+                },
+                "WPname": {
+                    "type": "cds.String",
+                    "length": 60
+                },
+                "ResTypeText": {
+                    "type": "cds.LargeString"
+                },
+                "ResourceText": {
+                    "type": "cds.LargeString"
+                },
+                "Uom": {
+                    "type": "cds.String",
+                    "length": 3
+                },
+                "Version": {
+                    "type": "cds.String",
+                    "length": 28
+                },
+                "Period": {
+                    "type": "cds.String",
+                    "length": 3
+                },
+                "FcYear": {
+                    "type": "cds.String",
+                    "length": 4
+                },
+                "StaffedEmployee": {
+                    "type": "cds.String",
+                    "length": 8
+                },
+                "Confirmed": {
+                    "type": "cds.String",
+                    "length": 1
+                },
+                "WorkitemName": {
+                    "type": "cds.LargeString"
+                },
+                "StaffedEffort": {
+                    "type": "cds.Decimal",
+                    "precision": 15,
+                    "scale": 3
+                },
+                "StaffedEmpDelvryServOrg": {
+                    "type": "cds.String",
+                    "length": 5
+                },
+                "StaffedEmpDelvryServOrgT": {
+                    "type": "cds.LargeString"
+                },
+                "StaffedEmployeeName": {
+                    "type": "cds.LargeString"
+                }
+            }
+        }
+    }
+}

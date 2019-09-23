@@ -1,0 +1,628 @@
+{
+    "definitions": {
+        "CPD.SC_PROJ_ENGMT_CREATE_UPD_SRV.Project": {
+            "kind": "entity",
+            "@cds.persistence.skip": true,
+            "elements": {
+                "ProjectID": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 40
+                },
+                "ProjectDesc": {
+                    "type": "cds.LargeString"
+                },
+                "RestrictTimePosting": {
+                    "type": "cds.String",
+                    "length": 1
+                },
+                "ProjManagerCompCode": {
+                    "type": "cds.String",
+                    "length": 4
+                },
+                "ProjAccountantCompCode": {
+                    "type": "cds.String",
+                    "length": 4
+                },
+                "ProjControllerCompCode": {
+                    "type": "cds.String",
+                    "length": 4
+                },
+                "ProjManagerExtId": {
+                    "type": "cds.String",
+                    "length": 38
+                },
+                "ProjectName": {
+                    "type": "cds.String",
+                    "length": 40
+                },
+                "ProjPartnerCompCode": {
+                    "type": "cds.String",
+                    "length": 4
+                },
+                "ProjAccountantExtId": {
+                    "type": "cds.String",
+                    "length": 38
+                },
+                "ProjectStage": {
+                    "type": "cds.String",
+                    "length": 4
+                },
+                "ProjControllerExtId": {
+                    "type": "cds.String",
+                    "length": 38
+                },
+                "ProjPartnerExtId": {
+                    "type": "cds.String",
+                    "length": 38
+                },
+                "StartDate": {
+                    "type": "cds.Timestamp"
+                },
+                "EndDate": {
+                    "type": "cds.Timestamp"
+                },
+                "Customer": {
+                    "type": "cds.String",
+                    "length": 10
+                },
+                "CostCenter": {
+                    "type": "cds.String",
+                    "length": 20
+                },
+                "ProfitCenter": {
+                    "type": "cds.String",
+                    "length": 10
+                },
+                "ProjectCategory": {
+                    "type": "cds.String",
+                    "length": 1
+                },
+                "Currency": {
+                    "type": "cds.String",
+                    "length": 5
+                },
+                "OrgID": {
+                    "type": "cds.String",
+                    "length": 5
+                },
+                "Confidential": {
+                    "type": "cds.String",
+                    "length": 1
+                },
+                "WorkPackageSet": {
+                    "type": "cds.Association",
+                    "target": "CPD.SC_PROJ_ENGMT_CREATE_UPD_SRV.WorkPackage"
+                }
+            }
+        },
+        "CPD.SC_PROJ_ENGMT_CREATE_UPD_SRV.WorkPackage": {
+            "kind": "entity",
+            "@cds.persistence.skip": true,
+            "elements": {
+                "ProjectID": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 40
+                },
+                "WorkPackageID": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 50
+                },
+                "WorkPackageName": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 60
+                },
+                "UnitId": {
+                    "type": "cds.String",
+                    "length": 40
+                },
+                "UnitQuantity": {
+                    "type": "cds.Decimal",
+                    "precision": 15,
+                    "scale": 3
+                },
+                "WorkPackageType": {
+                    "type": "cds.String",
+                    "length": 1
+                },
+                "Description": {
+                    "type": "cds.LargeString"
+                },
+                "WPStartDate": {
+                    "type": "cds.Timestamp"
+                },
+                "WPEndDate": {
+                    "type": "cds.Timestamp"
+                },
+                "DemandSet": {
+                    "type": "cds.Association",
+                    "target": "CPD.SC_PROJ_ENGMT_CREATE_UPD_SRV.Demand"
+                },
+                "WorkItemSet": {
+                    "type": "cds.Association",
+                    "target": "CPD.SC_PROJ_ENGMT_CREATE_UPD_SRV.WorkItem"
+                }
+            }
+        },
+        "CPD.SC_PROJ_ENGMT_CREATE_UPD_SRV.WorkItem": {
+            "kind": "entity",
+            "@cds.persistence.skip": true,
+            "elements": {
+                "ProjectID": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 40
+                },
+                "Workitem": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 10
+                },
+                "WorkPackageID": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 50
+                },
+                "WorkPackageName": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 60
+                },
+                "Workitemname": {
+                    "type": "cds.String",
+                    "length": 40
+                }
+            }
+        },
+        "CPD.SC_PROJ_ENGMT_CREATE_UPD_SRV.Demand": {
+            "kind": "entity",
+            "@cds.persistence.skip": true,
+            "elements": {
+                "ProjectID": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 40
+                },
+                "WorkPackageID": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 50
+                },
+                "WorkPackageName": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 60
+                },
+                "ResType": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 4
+                },
+                "ResourceId": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 40
+                },
+                "Workitem": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 10
+                },
+                "DelvryServOrg": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 5
+                },
+                "BillingControlCategory": {
+                    "type": "cds.String",
+                    "length": 8
+                },
+                "Uom": {
+                    "type": "cds.String",
+                    "length": 3
+                },
+                "Skills": {
+                    "type": "cds.LargeString"
+                },
+                "ExpenseCost": {
+                    "type": "cds.Decimal",
+                    "precision": 18,
+                    "scale": 2
+                },
+                "ExpenseRevenue": {
+                    "type": "cds.Decimal",
+                    "precision": 18,
+                    "scale": 2
+                },
+                "Effort": {
+                    "type": "cds.Decimal",
+                    "precision": 18,
+                    "scale": 3
+                }
+            }
+        },
+        "CPD.SC_PROJ_ENGMT_CREATE_UPD_SRV.A_CustProjSlsOrdType": {
+            "kind": "entity",
+            "@cds.persistence.skip": true,
+            "elements": {
+                "CustomerProject": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 40
+                },
+                "SalesOrder": {
+                    "type": "cds.String",
+                    "length": 10
+                },
+                "SoldToParty": {
+                    "type": "cds.String",
+                    "length": 10
+                },
+                "TotalNetAmount": {
+                    "type": "cds.Decimal",
+                    "precision": 16,
+                    "scale": 3
+                },
+                "TransactionCurrency": {
+                    "type": "cds.String",
+                    "length": 5
+                },
+                "PurchaseOrderByCustomer": {
+                    "type": "cds.String",
+                    "length": 35
+                },
+                "CustomerPurchaseOrderDate": {
+                    "type": "cds.Date"
+                },
+                "SalesOffice": {
+                    "type": "cds.String",
+                    "length": 4
+                },
+                "SalesGroup": {
+                    "type": "cds.String",
+                    "length": 3
+                },
+                "CustomerPaymentTerms": {
+                    "type": "cds.String",
+                    "length": 4
+                },
+                "CustomerAccountAssignmentGroup": {
+                    "type": "cds.String",
+                    "length": 2
+                },
+                "HeaderBillingBlockReason": {
+                    "type": "cds.String",
+                    "length": 2
+                },
+                "SalesOrganization": {
+                    "type": "cds.String",
+                    "length": 4
+                },
+                "DistributionChannel": {
+                    "type": "cds.String",
+                    "length": 2
+                },
+                "OrganizationDivision": {
+                    "type": "cds.String",
+                    "length": 2
+                },
+                "to_CustProjSlsOrdItem": {
+                    "type": "cds.Association",
+                    "target": "CPD.SC_PROJ_ENGMT_CREATE_UPD_SRV.A_CustProjSlsOrdItemType",
+                    "cardinality": {
+                        "max": "*"
+                    }
+                },
+                "to_CustProjSlsOrdPartner": {
+                    "type": "cds.Association",
+                    "target": "CPD.SC_PROJ_ENGMT_CREATE_UPD_SRV.A_CustProjSlsOrdPartnerType",
+                    "cardinality": {
+                        "max": "*"
+                    }
+                },
+                "to_CustProjSlsOrdText": {
+                    "type": "cds.Association",
+                    "target": "CPD.SC_PROJ_ENGMT_CREATE_UPD_SRV.A_CustProjSlsOrdTextType",
+                    "cardinality": {
+                        "max": "*"
+                    }
+                }
+            }
+        },
+        "CPD.SC_PROJ_ENGMT_CREATE_UPD_SRV.A_CustProjSlsOrdItemType": {
+            "kind": "entity",
+            "@cds.persistence.skip": true,
+            "elements": {
+                "CustomerProject": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 40
+                },
+                "SalesOrderItem": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 6
+                },
+                "SalesOrder": {
+                    "type": "cds.String",
+                    "length": 10
+                },
+                "SalesOrderItemCategory": {
+                    "type": "cds.String",
+                    "length": 4
+                },
+                "Material": {
+                    "type": "cds.String",
+                    "length": 40
+                },
+                "SalesOrderItemText": {
+                    "type": "cds.String",
+                    "length": 40
+                },
+                "ProfitCenter": {
+                    "type": "cds.String",
+                    "length": 10
+                },
+                "CappedNetAmount": {
+                    "type": "cds.Decimal",
+                    "precision": 16,
+                    "scale": 3
+                },
+                "CappedNetAmtAlertThldInPct": {
+                    "type": "cds.String",
+                    "length": 3
+                },
+                "MaterialByCustomer": {
+                    "type": "cds.String",
+                    "length": 35
+                },
+                "NetAmount": {
+                    "type": "cds.Decimal",
+                    "precision": 16,
+                    "scale": 3
+                },
+                "ExpectedNetAmount": {
+                    "type": "cds.Decimal",
+                    "precision": 16,
+                    "scale": 3
+                },
+                "TotalStandAloneSellingPrice": {
+                    "type": "cds.Decimal",
+                    "precision": 16,
+                    "scale": 3
+                },
+                "TransactionCurrency": {
+                    "type": "cds.String",
+                    "length": 5
+                },
+                "WBSElement": {
+                    "type": "cds.String",
+                    "length": 24
+                },
+                "PurchaseOrderByCustomer": {
+                    "type": "cds.String",
+                    "length": 35
+                },
+                "UnderlyingPurchaseOrderItem": {
+                    "type": "cds.String",
+                    "length": 6
+                },
+                "SalesDocumentRjcnReason": {
+                    "type": "cds.String",
+                    "length": 2
+                },
+                "SDDocumentRejectionStatus": {
+                    "type": "cds.String",
+                    "length": 1
+                },
+                "SDProcessStatus": {
+                    "type": "cds.String",
+                    "length": 1
+                },
+                "ItemBillingBlockReason": {
+                    "type": "cds.String",
+                    "length": 2
+                },
+                "to_CustProjSlsOrdItemText": {
+                    "type": "cds.Association",
+                    "target": "CPD.SC_PROJ_ENGMT_CREATE_UPD_SRV.A_CustProjSlsOrdItemTextType",
+                    "cardinality": {
+                        "max": "*"
+                    }
+                },
+                "to_CustProjSlsOrdItemWorkPckg": {
+                    "type": "cds.Association",
+                    "target": "CPD.SC_PROJ_ENGMT_CREATE_UPD_SRV.A_CustProjSlsOrdItemWorkPckgType",
+                    "cardinality": {
+                        "max": "*"
+                    }
+                },
+                "to_CustProjSOIBillgPlnItm": {
+                    "type": "cds.Association",
+                    "target": "CPD.SC_PROJ_ENGMT_CREATE_UPD_SRV.A_CustProjSlsOrdItmBillgPlnItmType",
+                    "cardinality": {
+                        "max": "*"
+                    }
+                }
+            }
+        },
+        "CPD.SC_PROJ_ENGMT_CREATE_UPD_SRV.A_CustProjSlsOrdItemTextType": {
+            "kind": "entity",
+            "@cds.persistence.skip": true,
+            "elements": {
+                "CustomerProject": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 40
+                },
+                "SalesOrderItem": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 6
+                },
+                "Language": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 2
+                },
+                "LongTextID": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 4
+                },
+                "LongText": {
+                    "type": "cds.LargeString"
+                },
+                "SalesOrder": {
+                    "type": "cds.String",
+                    "length": 10
+                }
+            }
+        },
+        "CPD.SC_PROJ_ENGMT_CREATE_UPD_SRV.A_CustProjSlsOrdItemWorkPckgType": {
+            "kind": "entity",
+            "@cds.persistence.skip": true,
+            "elements": {
+                "CustomerProject": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 40
+                },
+                "SalesOrderItem": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 6
+                },
+                "WorkPackage": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 50
+                },
+                "WorkPackageName": {
+                    "type": "cds.String",
+                    "length": 60
+                },
+                "SalesOrder": {
+                    "type": "cds.String",
+                    "length": 10
+                },
+                "WorkPackageStartDate": {
+                    "type": "cds.Date"
+                },
+                "WorkPackageEndDate": {
+                    "type": "cds.Date"
+                }
+            }
+        },
+        "CPD.SC_PROJ_ENGMT_CREATE_UPD_SRV.A_CustProjSlsOrdItmBillgPlnItmType": {
+            "kind": "entity",
+            "@cds.persistence.skip": true,
+            "elements": {
+                "CustomerProject": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 40
+                },
+                "SalesOrderItem": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 6
+                },
+                "BillingPlanItem": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 6
+                },
+                "SalesOrder": {
+                    "type": "cds.String",
+                    "length": 10
+                },
+                "BillingPlanBillingDate": {
+                    "type": "cds.Date"
+                },
+                "BillingPlanRelatedBillgStatus": {
+                    "type": "cds.String",
+                    "length": 1
+                },
+                "BillingPlanAmount": {
+                    "type": "cds.Decimal",
+                    "precision": 16,
+                    "scale": 3
+                },
+                "TransactionCurrency": {
+                    "type": "cds.String",
+                    "length": 5
+                },
+                "BillingPlanItemUsage": {
+                    "type": "cds.String",
+                    "length": 2
+                },
+                "BillingPlanItemDescription": {
+                    "type": "cds.String",
+                    "length": 255
+                },
+                "BillingPlanServiceStartDate": {
+                    "type": "cds.Date"
+                },
+                "BillingPlanServiceEndDate": {
+                    "type": "cds.Date"
+                }
+            }
+        },
+        "CPD.SC_PROJ_ENGMT_CREATE_UPD_SRV.A_CustProjSlsOrdPartnerType": {
+            "kind": "entity",
+            "@cds.persistence.skip": true,
+            "elements": {
+                "CustomerProject": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 40
+                },
+                "PartnerFunction": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 2
+                },
+                "SalesOrder": {
+                    "type": "cds.String",
+                    "length": 10
+                },
+                "BusinessPartner": {
+                    "type": "cds.String",
+                    "length": 10
+                }
+            }
+        },
+        "CPD.SC_PROJ_ENGMT_CREATE_UPD_SRV.A_CustProjSlsOrdTextType": {
+            "kind": "entity",
+            "@cds.persistence.skip": true,
+            "elements": {
+                "CustomerProject": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 40
+                },
+                "Language": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 2
+                },
+                "LongTextID": {
+                    "key": true,
+                    "type": "cds.String",
+                    "length": 4
+                },
+                "LongText": {
+                    "type": "cds.LargeString"
+                },
+                "SalesOrder": {
+                    "type": "cds.String",
+                    "length": 10
+                }
+            }
+        }
+    }
+}
