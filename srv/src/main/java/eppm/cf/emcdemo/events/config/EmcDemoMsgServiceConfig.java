@@ -1,24 +1,32 @@
 package eppm.cf.emcdemo.events.config;
 
-import org.springframework.cloud.Cloud;
-import org.springframework.cloud.CloudFactory;
-import org.springframework.cloud.service.ServiceConnectorConfig;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-
 import com.sap.cloud.servicesdk.xbem.core.MessagingService;
 import com.sap.cloud.servicesdk.xbem.core.MessagingServiceFactory;
 import com.sap.cloud.servicesdk.xbem.core.exception.MessagingException;
 import com.sap.cloud.servicesdk.xbem.core.impl.MessagingServiceFactoryCreator;
 import com.sap.cloud.servicesdk.xbem.extension.sapcp.jms.MessagingServiceJmsConnectionFactory;
 import com.sap.cloud.servicesdk.xbem.extension.sapcp.jms.MessagingServiceJmsSettings;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.cloud.Cloud;
+import org.springframework.cloud.CloudFactory;
+import org.springframework.cloud.service.ServiceConnectorConfig;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.jms.annotation.EnableJms;
+import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
+import javax.jms.Session;
 
+
+@EnableJms
 @Configuration
 public class EmcDemoMsgServiceConfig {
 
-     @Bean
+    private static final Logger log = LoggerFactory.getLogger(EmcDemoMsgServiceConfig.class);
+
+    @Bean
     public MessagingServiceFactory getMessagingServiceFactory() {
-        ServiceConnectorConfig config = null; // currently there are no configurations for the MessagingService supported
+        ServiceConnectorConfig config = null;
         Cloud cloud = new CloudFactory().getCloud();
         // get the MessagingService via the service connector
         MessagingService messagingService = cloud.getSingletonServiceConnector(MessagingService.class, config);
@@ -27,6 +35,7 @@ public class EmcDemoMsgServiceConfig {
         }
         return MessagingServiceFactoryCreator.createFactory(messagingService);
     }
+
 
     @Bean
     public MessagingServiceJmsConnectionFactory getMessagingServiceJmsConnectionFactory(MessagingServiceFactory messagingServiceFactory) {
@@ -44,6 +53,38 @@ public class EmcDemoMsgServiceConfig {
             return messagingServiceFactory.createConnectionFactory(MessagingServiceJmsConnectionFactory.class, settings);
         } catch (MessagingException e) {
             throw new IllegalStateException("Unable to create the Connection Factory", e);
+        }
+    }
+
+    @Bean
+    public DefaultJmsListenerContainerFactory jmsListenerContainerFactory(MessagingServiceJmsConnectionFactory messageServiceJmsConnectionFactory) {
+
+
+        log.info("Initialized the default JmsListenerContainerFactory");
+
+        try {
+
+//			final JmsConnectionFactory connectionFactory = messagingService.configure(JmsConnectionFactory.class);
+
+//			messagingServiceFactory.setRemoteURI(String.format(REMOTE_URI_WITH_FAILOVER, messagingServiceFactory.getRemoteURI()));
+
+            DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
+            factory.setConnectionFactory(messageServiceJmsConnectionFactory);
+            factory.setSessionAcknowledgeMode(Session.AUTO_ACKNOWLEDGE);
+
+            // Necessary to get it work with enterprise messaging
+            factory.setSessionTransacted(false);
+
+            // Enable deserialization of events to Java types
+//			factory.setMessageConverter(messageConverter);
+
+            // Log all errors
+            factory.setErrorHandler(e -> log.warn("JMS error: the message is dropped", e));
+
+            return factory;
+        } catch (Exception e) {
+            log.error("Error while initializing the default JmsListenerContainerFactory. Events from S/4HANA will NOT be processed", e);
+            throw e;
         }
     }
 }
