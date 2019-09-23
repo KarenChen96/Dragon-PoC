@@ -12,6 +12,7 @@ modules:
         properties:
           url: ${default-url}
     requires:
+      - name: emcdemo-dest
       - name: emcdemo-db-hdi-container
         properties:
           JBP_CONFIG_RESOURCE_CONFIGURATION: '[tomcat/webapps/ROOT/META-INF/context.xml:
@@ -26,6 +27,11 @@ modules:
     requires:
       - name: emcdemo-db-hdi-container
 resources:
+  - name: emcdemo-dest
+    type: org.cloudfoundry.managed-service
+    parameters:
+    service: destination
+    service-plan: lite
   - name: emcdemo-uaa
     type: org.cloudfoundry.managed-service
     parameters:
