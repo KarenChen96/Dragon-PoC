@@ -17,6 +17,6 @@ public class EmcDemoMsgServiceController {
     public void onReceivedMessage (@Valid EmcDemoProjectEvent event){
         log.info("Received the message from S/4HANA Enterprise Message");
         log.debug("Handle BusinessPartnerEvent: {}", event);
-        String projectId = event.getPayload().getProjectKey();
+        String projectId = event.getPayload().getBusinessPartnerKey();
     }
 }

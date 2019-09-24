@@ -1,466 +1,1858 @@
 {
   "definitions": {
-    "CatalogService": {
-      "kind": "service"
-    },
-    "CatalogService.Authors": {
+    "CPD.SC_PROJ_ENGMT_CREATE_UPD_SRV.A_CustProjSlsOrdItemTextType": {
       "kind": "entity",
-      "@cds.persistence.name": "CATALOGSERVICE_AUTHORS",
-      "query": {
-        "SELECT": {
-          "from": {
-            "ref": [
-              "my.bookshop.Authors"
-            ]
-          }
-        }
-      },
+      "@cds.persistence.name": "CPD_SC_PROJ_ENGMT_CREATE_UPD_SRV_A_CUSTPROJSLSORDITEMTEXTTYPE",
+      "@cds.persistence.skip": true,
       "elements": {
-        "ID": {
-          "@cds.persistence.name": "ID",
+        "CustomerProject": {
+          "@cds.persistence.name": "CUSTOMERPROJECT",
           "key": true,
-          "type": "cds.Integer"
+          "type": "cds.String",
+          "length": 40
         },
-        "name": {
-          "@cds.persistence.name": "NAME",
-          "type": "cds.String"
+        "SalesOrderItem": {
+          "@cds.persistence.name": "SALESORDERITEM",
+          "key": true,
+          "type": "cds.String",
+          "length": 6
         },
-        "books": {
-          "@cds.persistence.name": "BOOKS",
+        "Language": {
+          "@cds.persistence.name": "LANGUAGE",
+          "key": true,
+          "type": "cds.String",
+          "length": 2
+        },
+        "LongTextID": {
+          "@cds.persistence.name": "LONGTEXTID",
+          "key": true,
+          "type": "cds.String",
+          "length": 4
+        },
+        "LongText": {
+          "@cds.persistence.name": "LONGTEXT",
+          "type": "cds.LargeString"
+        },
+        "SalesOrder": {
+          "@cds.persistence.name": "SALESORDER",
+          "type": "cds.String",
+          "length": 10
+        }
+      }
+    },
+    "CPD.SC_PROJ_ENGMT_CREATE_UPD_SRV.A_CustProjSlsOrdItemType": {
+      "kind": "entity",
+      "@cds.persistence.name": "CPD_SC_PROJ_ENGMT_CREATE_UPD_SRV_A_CUSTPROJSLSORDITEMTYPE",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "CustomerProject": {
+          "@cds.persistence.name": "CUSTOMERPROJECT",
+          "key": true,
+          "type": "cds.String",
+          "length": 40
+        },
+        "SalesOrderItem": {
+          "@cds.persistence.name": "SALESORDERITEM",
+          "key": true,
+          "type": "cds.String",
+          "length": 6
+        },
+        "SalesOrder": {
+          "@cds.persistence.name": "SALESORDER",
+          "type": "cds.String",
+          "length": 10
+        },
+        "SalesOrderItemCategory": {
+          "@cds.persistence.name": "SALESORDERITEMCATEGORY",
+          "type": "cds.String",
+          "length": 4
+        },
+        "Material": {
+          "@cds.persistence.name": "MATERIAL",
+          "type": "cds.String",
+          "length": 40
+        },
+        "SalesOrderItemText": {
+          "@cds.persistence.name": "SALESORDERITEMTEXT",
+          "type": "cds.String",
+          "length": 40
+        },
+        "ProfitCenter": {
+          "@cds.persistence.name": "PROFITCENTER",
+          "type": "cds.String",
+          "length": 10
+        },
+        "CappedNetAmount": {
+          "@cds.persistence.name": "CAPPEDNETAMOUNT",
+          "type": "cds.Decimal",
+          "precision": 16,
+          "scale": 3
+        },
+        "CappedNetAmtAlertThldInPct": {
+          "@cds.persistence.name": "CAPPEDNETAMTALERTTHLDINPCT",
+          "type": "cds.String",
+          "length": 3
+        },
+        "MaterialByCustomer": {
+          "@cds.persistence.name": "MATERIALBYCUSTOMER",
+          "type": "cds.String",
+          "length": 35
+        },
+        "NetAmount": {
+          "@cds.persistence.name": "NETAMOUNT",
+          "type": "cds.Decimal",
+          "precision": 16,
+          "scale": 3
+        },
+        "ExpectedNetAmount": {
+          "@cds.persistence.name": "EXPECTEDNETAMOUNT",
+          "type": "cds.Decimal",
+          "precision": 16,
+          "scale": 3
+        },
+        "TotalStandAloneSellingPrice": {
+          "@cds.persistence.name": "TOTALSTANDALONESELLINGPRICE",
+          "type": "cds.Decimal",
+          "precision": 16,
+          "scale": 3
+        },
+        "TransactionCurrency": {
+          "@cds.persistence.name": "TRANSACTIONCURRENCY",
+          "type": "cds.String",
+          "length": 5
+        },
+        "WBSElement": {
+          "@cds.persistence.name": "WBSELEMENT",
+          "type": "cds.String",
+          "length": 24
+        },
+        "PurchaseOrderByCustomer": {
+          "@cds.persistence.name": "PURCHASEORDERBYCUSTOMER",
+          "type": "cds.String",
+          "length": 35
+        },
+        "UnderlyingPurchaseOrderItem": {
+          "@cds.persistence.name": "UNDERLYINGPURCHASEORDERITEM",
+          "type": "cds.String",
+          "length": 6
+        },
+        "SalesDocumentRjcnReason": {
+          "@cds.persistence.name": "SALESDOCUMENTRJCNREASON",
+          "type": "cds.String",
+          "length": 2
+        },
+        "SDDocumentRejectionStatus": {
+          "@cds.persistence.name": "SDDOCUMENTREJECTIONSTATUS",
+          "type": "cds.String",
+          "length": 1
+        },
+        "SDProcessStatus": {
+          "@cds.persistence.name": "SDPROCESSSTATUS",
+          "type": "cds.String",
+          "length": 1
+        },
+        "ItemBillingBlockReason": {
+          "@cds.persistence.name": "ITEMBILLINGBLOCKREASON",
+          "type": "cds.String",
+          "length": 2
+        },
+        "to_CustProjSlsOrdItemText": {
+          "@cds.persistence.name": "TO_CUSTPROJSLSORDITEMTEXT",
           "type": "cds.Association",
           "cardinality": {
             "max": "*"
           },
-          "target": "CatalogService.Books",
-          "on": [
-            {
-              "ref": [
-                "books",
-                "author"
-              ]
-            },
-            "=",
-            {
-              "ref": [
-                "$self"
-              ]
-            }
-          ]
-        }
-      },
-      "$syntax": "projection"
-    },
-    "CatalogService.Books": {
-      "kind": "entity",
-      "@cds.persistence.name": "CATALOGSERVICE_BOOKS",
-      "query": {
-        "SELECT": {
-          "from": {
-            "ref": [
-              "my.bookshop.Books"
-            ]
-          }
-        }
-      },
-      "elements": {
-        "ID": {
-          "@cds.persistence.name": "ID",
-          "key": true,
-          "type": "cds.Integer"
-        },
-        "title": {
-          "@cds.persistence.name": "TITLE",
-          "localized": true,
-          "type": "cds.String"
-        },
-        "author": {
-          "@cds.persistence.name": "AUTHOR",
-          "type": "cds.Association",
-          "target": "CatalogService.Authors",
+          "target": "CPD.SC_PROJ_ENGMT_CREATE_UPD_SRV.A_CustProjSlsOrdItemTextType",
           "keys": [
             {
               "ref": [
-                "ID"
+                "CustomerProject"
               ],
-              "$generatedFieldName": "author_ID"
+              "$generatedFieldName": "to_CustProjSlsOrdItemText_CustomerProject"
+            },
+            {
+              "ref": [
+                "SalesOrderItem"
+              ],
+              "$generatedFieldName": "to_CustProjSlsOrdItemText_SalesOrderItem"
+            },
+            {
+              "ref": [
+                "Language"
+              ],
+              "$generatedFieldName": "to_CustProjSlsOrdItemText_Language"
+            },
+            {
+              "ref": [
+                "LongTextID"
+              ],
+              "$generatedFieldName": "to_CustProjSlsOrdItemText_LongTextID"
             }
           ]
         },
-        "stock": {
-          "@cds.persistence.name": "STOCK",
-          "type": "cds.Integer"
-        },
-        "texts": {
-          "@cds.persistence.name": "TEXTS",
-          "type": "cds.Composition",
+        "to_CustProjSlsOrdItemWorkPckg": {
+          "@cds.persistence.name": "TO_CUSTPROJSLSORDITEMWORKPCKG",
+          "type": "cds.Association",
           "cardinality": {
             "max": "*"
           },
-          "target": "CatalogService.Books_texts",
-          "on": [
+          "target": "CPD.SC_PROJ_ENGMT_CREATE_UPD_SRV.A_CustProjSlsOrdItemWorkPckgType",
+          "keys": [
             {
               "ref": [
-                "texts",
-                "ID"
-              ]
+                "CustomerProject"
+              ],
+              "$generatedFieldName": "to_CustProjSlsOrdItemWorkPckg_CustomerProject"
             },
-            "=",
             {
               "ref": [
-                "ID"
-              ]
+                "SalesOrderItem"
+              ],
+              "$generatedFieldName": "to_CustProjSlsOrdItemWorkPckg_SalesOrderItem"
+            },
+            {
+              "ref": [
+                "WorkPackage"
+              ],
+              "$generatedFieldName": "to_CustProjSlsOrdItemWorkPckg_WorkPackage"
             }
           ]
         },
-        "localized": {
-          "@cds.persistence.name": "LOCALIZED",
+        "to_CustProjSOIBillgPlnItm": {
+          "@cds.persistence.name": "TO_CUSTPROJSOIBILLGPLNITM",
           "type": "cds.Association",
-          "target": "CatalogService.Books_texts",
-          "on": [
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "CPD.SC_PROJ_ENGMT_CREATE_UPD_SRV.A_CustProjSlsOrdItmBillgPlnItmType",
+          "keys": [
             {
               "ref": [
-                "localized",
-                "ID"
-              ]
+                "CustomerProject"
+              ],
+              "$generatedFieldName": "to_CustProjSOIBillgPlnItm_CustomerProject"
             },
-            "=",
             {
               "ref": [
-                "ID"
-              ]
+                "SalesOrderItem"
+              ],
+              "$generatedFieldName": "to_CustProjSOIBillgPlnItm_SalesOrderItem"
             },
-            "and",
             {
               "ref": [
-                "localized",
-                "locale"
-              ]
-            },
-            "=",
-            {
-              "ref": [
-                "$user",
-                "locale"
-              ]
+                "BillingPlanItem"
+              ],
+              "$generatedFieldName": "to_CustProjSOIBillgPlnItm_BillingPlanItem"
             }
           ]
         },
-        "author_ID": {
-          "@cds.persistence.name": "AUTHOR_ID",
-          "@odata.foreignKey4": "author",
-          "type": "cds.Integer"
+        "to_CustProjSlsOrdItemText_CustomerProject": {
+          "@cds.persistence.name": "TO_CUSTPROJSLSORDITEMTEXT_CUSTOMERPROJECT",
+          "@odata.foreignKey4": "to_CustProjSlsOrdItemText",
+          "type": "cds.String",
+          "length": 40
+        },
+        "to_CustProjSlsOrdItemText_SalesOrderItem": {
+          "@cds.persistence.name": "TO_CUSTPROJSLSORDITEMTEXT_SALESORDERITEM",
+          "@odata.foreignKey4": "to_CustProjSlsOrdItemText",
+          "type": "cds.String",
+          "length": 6
+        },
+        "to_CustProjSlsOrdItemText_Language": {
+          "@cds.persistence.name": "TO_CUSTPROJSLSORDITEMTEXT_LANGUAGE",
+          "@odata.foreignKey4": "to_CustProjSlsOrdItemText",
+          "type": "cds.String",
+          "length": 2
+        },
+        "to_CustProjSlsOrdItemText_LongTextID": {
+          "@cds.persistence.name": "TO_CUSTPROJSLSORDITEMTEXT_LONGTEXTID",
+          "@odata.foreignKey4": "to_CustProjSlsOrdItemText",
+          "type": "cds.String",
+          "length": 4
+        },
+        "to_CustProjSlsOrdItemWorkPckg_CustomerProject": {
+          "@cds.persistence.name": "TO_CUSTPROJSLSORDITEMWORKPCKG_CUSTOMERPROJECT",
+          "@odata.foreignKey4": "to_CustProjSlsOrdItemWorkPckg",
+          "type": "cds.String",
+          "length": 40
+        },
+        "to_CustProjSlsOrdItemWorkPckg_SalesOrderItem": {
+          "@cds.persistence.name": "TO_CUSTPROJSLSORDITEMWORKPCKG_SALESORDERITEM",
+          "@odata.foreignKey4": "to_CustProjSlsOrdItemWorkPckg",
+          "type": "cds.String",
+          "length": 6
+        },
+        "to_CustProjSlsOrdItemWorkPckg_WorkPackage": {
+          "@cds.persistence.name": "TO_CUSTPROJSLSORDITEMWORKPCKG_WORKPACKAGE",
+          "@odata.foreignKey4": "to_CustProjSlsOrdItemWorkPckg",
+          "type": "cds.String",
+          "length": 50
+        },
+        "to_CustProjSOIBillgPlnItm_CustomerProject": {
+          "@cds.persistence.name": "TO_CUSTPROJSOIBILLGPLNITM_CUSTOMERPROJECT",
+          "@odata.foreignKey4": "to_CustProjSOIBillgPlnItm",
+          "type": "cds.String",
+          "length": 40
+        },
+        "to_CustProjSOIBillgPlnItm_SalesOrderItem": {
+          "@cds.persistence.name": "TO_CUSTPROJSOIBILLGPLNITM_SALESORDERITEM",
+          "@odata.foreignKey4": "to_CustProjSOIBillgPlnItm",
+          "type": "cds.String",
+          "length": 6
+        },
+        "to_CustProjSOIBillgPlnItm_BillingPlanItem": {
+          "@cds.persistence.name": "TO_CUSTPROJSOIBILLGPLNITM_BILLINGPLANITEM",
+          "@odata.foreignKey4": "to_CustProjSOIBillgPlnItm",
+          "type": "cds.String",
+          "length": 6
         }
-      },
-      "$syntax": "projection"
+      }
     },
-    "CatalogService.Books_texts": {
+    "CPD.SC_PROJ_ENGMT_CREATE_UPD_SRV.A_CustProjSlsOrdItemWorkPckgType": {
       "kind": "entity",
-      "@cds.autoexpose": true,
-      "@cds.autoexposed": true,
-      "@cds.persistence.name": "CATALOGSERVICE_BOOKS_TEXTS",
-      "@odata.draft.enabled": false,
-      "query": {
-        "SELECT": {
-          "from": {
-            "ref": [
-              "my.bookshop.Books_texts"
-            ]
-          }
-        }
-      },
+      "@cds.persistence.name": "CPD_SC_PROJ_ENGMT_CREATE_UPD_SRV_A_CUSTPROJSLSORDITEMWORKPCKGTYPE",
+      "@cds.persistence.skip": true,
       "elements": {
-        "locale": {
-          "@cds.persistence.name": "LOCALE",
+        "CustomerProject": {
+          "@cds.persistence.name": "CUSTOMERPROJECT",
+          "key": true,
+          "type": "cds.String",
+          "length": 40
+        },
+        "SalesOrderItem": {
+          "@cds.persistence.name": "SALESORDERITEM",
+          "key": true,
+          "type": "cds.String",
+          "length": 6
+        },
+        "WorkPackage": {
+          "@cds.persistence.name": "WORKPACKAGE",
+          "key": true,
+          "type": "cds.String",
+          "length": 50
+        },
+        "WorkPackageName": {
+          "@cds.persistence.name": "WORKPACKAGENAME",
+          "type": "cds.String",
+          "length": 60
+        },
+        "SalesOrder": {
+          "@cds.persistence.name": "SALESORDER",
+          "type": "cds.String",
+          "length": 10
+        },
+        "WorkPackageStartDate": {
+          "@cds.persistence.name": "WORKPACKAGESTARTDATE",
+          "type": "cds.Date"
+        },
+        "WorkPackageEndDate": {
+          "@cds.persistence.name": "WORKPACKAGEENDDATE",
+          "type": "cds.Date"
+        }
+      }
+    },
+    "CPD.SC_PROJ_ENGMT_CREATE_UPD_SRV.A_CustProjSlsOrdItmBillgPlnItmType": {
+      "kind": "entity",
+      "@cds.persistence.name": "CPD_SC_PROJ_ENGMT_CREATE_UPD_SRV_A_CUSTPROJSLSORDITMBILLGPLNITMTYPE",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "CustomerProject": {
+          "@cds.persistence.name": "CUSTOMERPROJECT",
+          "key": true,
+          "type": "cds.String",
+          "length": 40
+        },
+        "SalesOrderItem": {
+          "@cds.persistence.name": "SALESORDERITEM",
+          "key": true,
+          "type": "cds.String",
+          "length": 6
+        },
+        "BillingPlanItem": {
+          "@cds.persistence.name": "BILLINGPLANITEM",
+          "key": true,
+          "type": "cds.String",
+          "length": 6
+        },
+        "SalesOrder": {
+          "@cds.persistence.name": "SALESORDER",
+          "type": "cds.String",
+          "length": 10
+        },
+        "BillingPlanBillingDate": {
+          "@cds.persistence.name": "BILLINGPLANBILLINGDATE",
+          "type": "cds.Date"
+        },
+        "BillingPlanRelatedBillgStatus": {
+          "@cds.persistence.name": "BILLINGPLANRELATEDBILLGSTATUS",
+          "type": "cds.String",
+          "length": 1
+        },
+        "BillingPlanAmount": {
+          "@cds.persistence.name": "BILLINGPLANAMOUNT",
+          "type": "cds.Decimal",
+          "precision": 16,
+          "scale": 3
+        },
+        "TransactionCurrency": {
+          "@cds.persistence.name": "TRANSACTIONCURRENCY",
+          "type": "cds.String",
+          "length": 5
+        },
+        "BillingPlanItemUsage": {
+          "@cds.persistence.name": "BILLINGPLANITEMUSAGE",
+          "type": "cds.String",
+          "length": 2
+        },
+        "BillingPlanItemDescription": {
+          "@cds.persistence.name": "BILLINGPLANITEMDESCRIPTION",
+          "type": "cds.String",
+          "length": 255
+        },
+        "BillingPlanServiceStartDate": {
+          "@cds.persistence.name": "BILLINGPLANSERVICESTARTDATE",
+          "type": "cds.Date"
+        },
+        "BillingPlanServiceEndDate": {
+          "@cds.persistence.name": "BILLINGPLANSERVICEENDDATE",
+          "type": "cds.Date"
+        }
+      }
+    },
+    "CPD.SC_PROJ_ENGMT_CREATE_UPD_SRV.A_CustProjSlsOrdPartnerType": {
+      "kind": "entity",
+      "@cds.persistence.name": "CPD_SC_PROJ_ENGMT_CREATE_UPD_SRV_A_CUSTPROJSLSORDPARTNERTYPE",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "CustomerProject": {
+          "@cds.persistence.name": "CUSTOMERPROJECT",
+          "key": true,
+          "type": "cds.String",
+          "length": 40
+        },
+        "PartnerFunction": {
+          "@cds.persistence.name": "PARTNERFUNCTION",
+          "key": true,
+          "type": "cds.String",
+          "length": 2
+        },
+        "SalesOrder": {
+          "@cds.persistence.name": "SALESORDER",
+          "type": "cds.String",
+          "length": 10
+        },
+        "BusinessPartner": {
+          "@cds.persistence.name": "BUSINESSPARTNER",
+          "type": "cds.String",
+          "length": 10
+        }
+      }
+    },
+    "CPD.SC_PROJ_ENGMT_CREATE_UPD_SRV.A_CustProjSlsOrdTextType": {
+      "kind": "entity",
+      "@cds.persistence.name": "CPD_SC_PROJ_ENGMT_CREATE_UPD_SRV_A_CUSTPROJSLSORDTEXTTYPE",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "CustomerProject": {
+          "@cds.persistence.name": "CUSTOMERPROJECT",
+          "key": true,
+          "type": "cds.String",
+          "length": 40
+        },
+        "Language": {
+          "@cds.persistence.name": "LANGUAGE",
+          "key": true,
+          "type": "cds.String",
+          "length": 2
+        },
+        "LongTextID": {
+          "@cds.persistence.name": "LONGTEXTID",
+          "key": true,
+          "type": "cds.String",
+          "length": 4
+        },
+        "LongText": {
+          "@cds.persistence.name": "LONGTEXT",
+          "type": "cds.LargeString"
+        },
+        "SalesOrder": {
+          "@cds.persistence.name": "SALESORDER",
+          "type": "cds.String",
+          "length": 10
+        }
+      }
+    },
+    "CPD.SC_PROJ_ENGMT_CREATE_UPD_SRV.A_CustProjSlsOrdType": {
+      "kind": "entity",
+      "@cds.persistence.name": "CPD_SC_PROJ_ENGMT_CREATE_UPD_SRV_A_CUSTPROJSLSORDTYPE",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "CustomerProject": {
+          "@cds.persistence.name": "CUSTOMERPROJECT",
+          "key": true,
+          "type": "cds.String",
+          "length": 40
+        },
+        "SalesOrder": {
+          "@cds.persistence.name": "SALESORDER",
+          "type": "cds.String",
+          "length": 10
+        },
+        "SoldToParty": {
+          "@cds.persistence.name": "SOLDTOPARTY",
+          "type": "cds.String",
+          "length": 10
+        },
+        "TotalNetAmount": {
+          "@cds.persistence.name": "TOTALNETAMOUNT",
+          "type": "cds.Decimal",
+          "precision": 16,
+          "scale": 3
+        },
+        "TransactionCurrency": {
+          "@cds.persistence.name": "TRANSACTIONCURRENCY",
+          "type": "cds.String",
+          "length": 5
+        },
+        "PurchaseOrderByCustomer": {
+          "@cds.persistence.name": "PURCHASEORDERBYCUSTOMER",
+          "type": "cds.String",
+          "length": 35
+        },
+        "CustomerPurchaseOrderDate": {
+          "@cds.persistence.name": "CUSTOMERPURCHASEORDERDATE",
+          "type": "cds.Date"
+        },
+        "SalesOffice": {
+          "@cds.persistence.name": "SALESOFFICE",
+          "type": "cds.String",
+          "length": 4
+        },
+        "SalesGroup": {
+          "@cds.persistence.name": "SALESGROUP",
+          "type": "cds.String",
+          "length": 3
+        },
+        "CustomerPaymentTerms": {
+          "@cds.persistence.name": "CUSTOMERPAYMENTTERMS",
+          "type": "cds.String",
+          "length": 4
+        },
+        "CustomerAccountAssignmentGroup": {
+          "@cds.persistence.name": "CUSTOMERACCOUNTASSIGNMENTGROUP",
+          "type": "cds.String",
+          "length": 2
+        },
+        "HeaderBillingBlockReason": {
+          "@cds.persistence.name": "HEADERBILLINGBLOCKREASON",
+          "type": "cds.String",
+          "length": 2
+        },
+        "SalesOrganization": {
+          "@cds.persistence.name": "SALESORGANIZATION",
+          "type": "cds.String",
+          "length": 4
+        },
+        "DistributionChannel": {
+          "@cds.persistence.name": "DISTRIBUTIONCHANNEL",
+          "type": "cds.String",
+          "length": 2
+        },
+        "OrganizationDivision": {
+          "@cds.persistence.name": "ORGANIZATIONDIVISION",
+          "type": "cds.String",
+          "length": 2
+        },
+        "to_CustProjSlsOrdItem": {
+          "@cds.persistence.name": "TO_CUSTPROJSLSORDITEM",
+          "type": "cds.Association",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "CPD.SC_PROJ_ENGMT_CREATE_UPD_SRV.A_CustProjSlsOrdItemType",
+          "keys": [
+            {
+              "ref": [
+                "CustomerProject"
+              ],
+              "$generatedFieldName": "to_CustProjSlsOrdItem_CustomerProject"
+            },
+            {
+              "ref": [
+                "SalesOrderItem"
+              ],
+              "$generatedFieldName": "to_CustProjSlsOrdItem_SalesOrderItem"
+            }
+          ]
+        },
+        "to_CustProjSlsOrdPartner": {
+          "@cds.persistence.name": "TO_CUSTPROJSLSORDPARTNER",
+          "type": "cds.Association",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "CPD.SC_PROJ_ENGMT_CREATE_UPD_SRV.A_CustProjSlsOrdPartnerType",
+          "keys": [
+            {
+              "ref": [
+                "CustomerProject"
+              ],
+              "$generatedFieldName": "to_CustProjSlsOrdPartner_CustomerProject"
+            },
+            {
+              "ref": [
+                "PartnerFunction"
+              ],
+              "$generatedFieldName": "to_CustProjSlsOrdPartner_PartnerFunction"
+            }
+          ]
+        },
+        "to_CustProjSlsOrdText": {
+          "@cds.persistence.name": "TO_CUSTPROJSLSORDTEXT",
+          "type": "cds.Association",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "CPD.SC_PROJ_ENGMT_CREATE_UPD_SRV.A_CustProjSlsOrdTextType",
+          "keys": [
+            {
+              "ref": [
+                "CustomerProject"
+              ],
+              "$generatedFieldName": "to_CustProjSlsOrdText_CustomerProject"
+            },
+            {
+              "ref": [
+                "Language"
+              ],
+              "$generatedFieldName": "to_CustProjSlsOrdText_Language"
+            },
+            {
+              "ref": [
+                "LongTextID"
+              ],
+              "$generatedFieldName": "to_CustProjSlsOrdText_LongTextID"
+            }
+          ]
+        },
+        "to_CustProjSlsOrdItem_CustomerProject": {
+          "@cds.persistence.name": "TO_CUSTPROJSLSORDITEM_CUSTOMERPROJECT",
+          "@odata.foreignKey4": "to_CustProjSlsOrdItem",
+          "type": "cds.String",
+          "length": 40
+        },
+        "to_CustProjSlsOrdItem_SalesOrderItem": {
+          "@cds.persistence.name": "TO_CUSTPROJSLSORDITEM_SALESORDERITEM",
+          "@odata.foreignKey4": "to_CustProjSlsOrdItem",
+          "type": "cds.String",
+          "length": 6
+        },
+        "to_CustProjSlsOrdPartner_CustomerProject": {
+          "@cds.persistence.name": "TO_CUSTPROJSLSORDPARTNER_CUSTOMERPROJECT",
+          "@odata.foreignKey4": "to_CustProjSlsOrdPartner",
+          "type": "cds.String",
+          "length": 40
+        },
+        "to_CustProjSlsOrdPartner_PartnerFunction": {
+          "@cds.persistence.name": "TO_CUSTPROJSLSORDPARTNER_PARTNERFUNCTION",
+          "@odata.foreignKey4": "to_CustProjSlsOrdPartner",
+          "type": "cds.String",
+          "length": 2
+        },
+        "to_CustProjSlsOrdText_CustomerProject": {
+          "@cds.persistence.name": "TO_CUSTPROJSLSORDTEXT_CUSTOMERPROJECT",
+          "@odata.foreignKey4": "to_CustProjSlsOrdText",
+          "type": "cds.String",
+          "length": 40
+        },
+        "to_CustProjSlsOrdText_Language": {
+          "@cds.persistence.name": "TO_CUSTPROJSLSORDTEXT_LANGUAGE",
+          "@odata.foreignKey4": "to_CustProjSlsOrdText",
+          "type": "cds.String",
+          "length": 2
+        },
+        "to_CustProjSlsOrdText_LongTextID": {
+          "@cds.persistence.name": "TO_CUSTPROJSLSORDTEXT_LONGTEXTID",
+          "@odata.foreignKey4": "to_CustProjSlsOrdText",
+          "type": "cds.String",
+          "length": 4
+        }
+      }
+    },
+    "CPD.SC_PROJ_ENGMT_CREATE_UPD_SRV.Demand": {
+      "kind": "entity",
+      "@cds.persistence.name": "CPD_SC_PROJ_ENGMT_CREATE_UPD_SRV_DEMAND",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "ProjectID": {
+          "@cds.persistence.name": "PROJECTID",
+          "key": true,
+          "type": "cds.String",
+          "length": 40
+        },
+        "WorkPackageID": {
+          "@cds.persistence.name": "WORKPACKAGEID",
+          "key": true,
+          "type": "cds.String",
+          "length": 50
+        },
+        "WorkPackageName": {
+          "@cds.persistence.name": "WORKPACKAGENAME",
+          "key": true,
+          "type": "cds.String",
+          "length": 60
+        },
+        "ResType": {
+          "@cds.persistence.name": "RESTYPE",
+          "key": true,
+          "type": "cds.String",
+          "length": 4
+        },
+        "ResourceId": {
+          "@cds.persistence.name": "RESOURCEID",
+          "key": true,
+          "type": "cds.String",
+          "length": 40
+        },
+        "Workitem": {
+          "@cds.persistence.name": "WORKITEM",
+          "key": true,
+          "type": "cds.String",
+          "length": 10
+        },
+        "DelvryServOrg": {
+          "@cds.persistence.name": "DELVRYSERVORG",
           "key": true,
           "type": "cds.String",
           "length": 5
         },
-        "ID": {
-          "@cds.persistence.name": "ID",
-          "key": true,
-          "type": "cds.Integer"
-        },
-        "title": {
-          "@cds.persistence.name": "TITLE",
-          "localized": false,
-          "type": "cds.String"
-        }
-      }
-    },
-    "CatalogService.Countries": {
-      "kind": "entity",
-      "@UI.Identification": [
-        {
-          "=": "name"
-        }
-      ],
-      "@cds.autoexpose": true,
-      "@cds.autoexposed": true,
-      "@cds.odata.valuelist": true,
-      "@cds.persistence.name": "CATALOGSERVICE_COUNTRIES",
-      "@cds.persistence.skip": "if-unused",
-      "query": {
-        "SELECT": {
-          "from": {
-            "ref": [
-              "sap.common.Countries"
-            ]
-          }
-        }
-      },
-      "elements": {
-        "name": {
-          "@Common.Label": "{i18n>Name}",
-          "@cds.persistence.name": "NAME",
-          "localized": true,
+        "BillingControlCategory": {
+          "@cds.persistence.name": "BILLINGCONTROLCATEGORY",
           "type": "cds.String",
-          "length": 255
+          "length": 8
         },
-        "descr": {
-          "@Common.Label": "{i18n>Description}",
-          "@cds.persistence.name": "DESCR",
-          "localized": true,
-          "type": "cds.String",
-          "length": 1000
-        },
-        "code": {
-          "@Common.Label": "{i18n>CountryCode}",
-          "@cds.persistence.name": "CODE",
-          "key": true,
+        "Uom": {
+          "@cds.persistence.name": "UOM",
           "type": "cds.String",
           "length": 3
         },
-        "texts": {
-          "@cds.persistence.name": "TEXTS",
-          "type": "cds.Composition",
-          "cardinality": {
-            "max": "*"
-          },
-          "target": "CatalogService.Countries_texts",
-          "on": [
-            {
-              "ref": [
-                "texts",
-                "code"
-              ]
-            },
-            "=",
-            {
-              "ref": [
-                "code"
-              ]
-            }
-          ]
+        "Skills": {
+          "@cds.persistence.name": "SKILLS",
+          "type": "cds.LargeString"
         },
-        "localized": {
-          "@cds.persistence.name": "LOCALIZED",
-          "type": "cds.Association",
-          "target": "CatalogService.Countries_texts",
-          "on": [
-            {
-              "ref": [
-                "localized",
-                "code"
-              ]
-            },
-            "=",
-            {
-              "ref": [
-                "code"
-              ]
-            },
-            "and",
-            {
-              "ref": [
-                "localized",
-                "locale"
-              ]
-            },
-            "=",
-            {
-              "ref": [
-                "$user",
-                "locale"
-              ]
-            }
-          ]
+        "ExpenseCost": {
+          "@cds.persistence.name": "EXPENSECOST",
+          "type": "cds.Decimal",
+          "precision": 18,
+          "scale": 2
+        },
+        "ExpenseRevenue": {
+          "@cds.persistence.name": "EXPENSEREVENUE",
+          "type": "cds.Decimal",
+          "precision": 18,
+          "scale": 2
+        },
+        "Effort": {
+          "@cds.persistence.name": "EFFORT",
+          "type": "cds.Decimal",
+          "precision": 18,
+          "scale": 3
         }
       }
     },
-    "CatalogService.Countries_texts": {
+    "CPD.SC_PROJ_ENGMT_CREATE_UPD_SRV.Project": {
       "kind": "entity",
-      "@cds.autoexpose": true,
-      "@cds.autoexposed": true,
-      "@cds.persistence.name": "CATALOGSERVICE_COUNTRIES_TEXTS",
-      "@odata.draft.enabled": false,
-      "query": {
-        "SELECT": {
-          "from": {
-            "ref": [
-              "sap.common.Countries_texts"
-            ]
-          }
-        }
-      },
+      "@cds.persistence.name": "CPD_SC_PROJ_ENGMT_CREATE_UPD_SRV_PROJECT",
+      "@cds.persistence.skip": true,
       "elements": {
-        "locale": {
-          "@cds.persistence.name": "LOCALE",
+        "ProjectID": {
+          "@cds.persistence.name": "PROJECTID",
+          "key": true,
+          "type": "cds.String",
+          "length": 40
+        },
+        "ProjectDesc": {
+          "@cds.persistence.name": "PROJECTDESC",
+          "type": "cds.LargeString"
+        },
+        "RestrictTimePosting": {
+          "@cds.persistence.name": "RESTRICTTIMEPOSTING",
+          "type": "cds.String",
+          "length": 1
+        },
+        "ProjManagerCompCode": {
+          "@cds.persistence.name": "PROJMANAGERCOMPCODE",
+          "type": "cds.String",
+          "length": 4
+        },
+        "ProjAccountantCompCode": {
+          "@cds.persistence.name": "PROJACCOUNTANTCOMPCODE",
+          "type": "cds.String",
+          "length": 4
+        },
+        "ProjControllerCompCode": {
+          "@cds.persistence.name": "PROJCONTROLLERCOMPCODE",
+          "type": "cds.String",
+          "length": 4
+        },
+        "ProjManagerExtId": {
+          "@cds.persistence.name": "PROJMANAGEREXTID",
+          "type": "cds.String",
+          "length": 38
+        },
+        "ProjectName": {
+          "@cds.persistence.name": "PROJECTNAME",
+          "type": "cds.String",
+          "length": 40
+        },
+        "ProjPartnerCompCode": {
+          "@cds.persistence.name": "PROJPARTNERCOMPCODE",
+          "type": "cds.String",
+          "length": 4
+        },
+        "ProjAccountantExtId": {
+          "@cds.persistence.name": "PROJACCOUNTANTEXTID",
+          "type": "cds.String",
+          "length": 38
+        },
+        "ProjectStage": {
+          "@cds.persistence.name": "PROJECTSTAGE",
+          "type": "cds.String",
+          "length": 4
+        },
+        "ProjControllerExtId": {
+          "@cds.persistence.name": "PROJCONTROLLEREXTID",
+          "type": "cds.String",
+          "length": 38
+        },
+        "ProjPartnerExtId": {
+          "@cds.persistence.name": "PROJPARTNEREXTID",
+          "type": "cds.String",
+          "length": 38
+        },
+        "StartDate": {
+          "@cds.persistence.name": "STARTDATE",
+          "type": "cds.Timestamp"
+        },
+        "EndDate": {
+          "@cds.persistence.name": "ENDDATE",
+          "type": "cds.Timestamp"
+        },
+        "Customer": {
+          "@cds.persistence.name": "CUSTOMER",
+          "type": "cds.String",
+          "length": 10
+        },
+        "CostCenter": {
+          "@cds.persistence.name": "COSTCENTER",
+          "type": "cds.String",
+          "length": 20
+        },
+        "ProfitCenter": {
+          "@cds.persistence.name": "PROFITCENTER",
+          "type": "cds.String",
+          "length": 10
+        },
+        "ProjectCategory": {
+          "@cds.persistence.name": "PROJECTCATEGORY",
+          "type": "cds.String",
+          "length": 1
+        },
+        "Currency": {
+          "@cds.persistence.name": "CURRENCY",
+          "type": "cds.String",
+          "length": 5
+        },
+        "OrgID": {
+          "@cds.persistence.name": "ORGID",
+          "type": "cds.String",
+          "length": 5
+        },
+        "Confidential": {
+          "@cds.persistence.name": "CONFIDENTIAL",
+          "type": "cds.String",
+          "length": 1
+        },
+        "WorkPackageSet": {
+          "@cds.persistence.name": "WORKPACKAGESET",
+          "type": "cds.Association",
+          "target": "CPD.SC_PROJ_ENGMT_CREATE_UPD_SRV.WorkPackage",
+          "keys": [
+            {
+              "ref": [
+                "ProjectID"
+              ],
+              "$generatedFieldName": "WorkPackageSet_ProjectID"
+            },
+            {
+              "ref": [
+                "WorkPackageID"
+              ],
+              "$generatedFieldName": "WorkPackageSet_WorkPackageID"
+            },
+            {
+              "ref": [
+                "WorkPackageName"
+              ],
+              "$generatedFieldName": "WorkPackageSet_WorkPackageName"
+            }
+          ]
+        },
+        "WorkPackageSet_ProjectID": {
+          "@cds.persistence.name": "WORKPACKAGESET_PROJECTID",
+          "@odata.foreignKey4": "WorkPackageSet",
+          "type": "cds.String",
+          "length": 40
+        },
+        "WorkPackageSet_WorkPackageID": {
+          "@cds.persistence.name": "WORKPACKAGESET_WORKPACKAGEID",
+          "@odata.foreignKey4": "WorkPackageSet",
+          "type": "cds.String",
+          "length": 50
+        },
+        "WorkPackageSet_WorkPackageName": {
+          "@cds.persistence.name": "WORKPACKAGESET_WORKPACKAGENAME",
+          "@odata.foreignKey4": "WorkPackageSet",
+          "type": "cds.String",
+          "length": 60
+        }
+      }
+    },
+    "CPD.SC_PROJ_ENGMT_CREATE_UPD_SRV.WorkItem": {
+      "kind": "entity",
+      "@cds.persistence.name": "CPD_SC_PROJ_ENGMT_CREATE_UPD_SRV_WORKITEM",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "ProjectID": {
+          "@cds.persistence.name": "PROJECTID",
+          "key": true,
+          "type": "cds.String",
+          "length": 40
+        },
+        "Workitem": {
+          "@cds.persistence.name": "WORKITEM",
+          "key": true,
+          "type": "cds.String",
+          "length": 10
+        },
+        "WorkPackageID": {
+          "@cds.persistence.name": "WORKPACKAGEID",
+          "key": true,
+          "type": "cds.String",
+          "length": 50
+        },
+        "WorkPackageName": {
+          "@cds.persistence.name": "WORKPACKAGENAME",
+          "key": true,
+          "type": "cds.String",
+          "length": 60
+        },
+        "Workitemname": {
+          "@cds.persistence.name": "WORKITEMNAME",
+          "type": "cds.String",
+          "length": 40
+        }
+      }
+    },
+    "CPD.SC_PROJ_ENGMT_CREATE_UPD_SRV.WorkPackage": {
+      "kind": "entity",
+      "@cds.persistence.name": "CPD_SC_PROJ_ENGMT_CREATE_UPD_SRV_WORKPACKAGE",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "ProjectID": {
+          "@cds.persistence.name": "PROJECTID",
+          "key": true,
+          "type": "cds.String",
+          "length": 40
+        },
+        "WorkPackageID": {
+          "@cds.persistence.name": "WORKPACKAGEID",
+          "key": true,
+          "type": "cds.String",
+          "length": 50
+        },
+        "WorkPackageName": {
+          "@cds.persistence.name": "WORKPACKAGENAME",
+          "key": true,
+          "type": "cds.String",
+          "length": 60
+        },
+        "UnitId": {
+          "@cds.persistence.name": "UNITID",
+          "type": "cds.String",
+          "length": 40
+        },
+        "UnitQuantity": {
+          "@cds.persistence.name": "UNITQUANTITY",
+          "type": "cds.Decimal",
+          "precision": 15,
+          "scale": 3
+        },
+        "WorkPackageType": {
+          "@cds.persistence.name": "WORKPACKAGETYPE",
+          "type": "cds.String",
+          "length": 1
+        },
+        "Description": {
+          "@cds.persistence.name": "DESCRIPTION",
+          "type": "cds.LargeString"
+        },
+        "WPStartDate": {
+          "@cds.persistence.name": "WPSTARTDATE",
+          "type": "cds.Timestamp"
+        },
+        "WPEndDate": {
+          "@cds.persistence.name": "WPENDDATE",
+          "type": "cds.Timestamp"
+        },
+        "DemandSet": {
+          "@cds.persistence.name": "DEMANDSET",
+          "type": "cds.Association",
+          "target": "CPD.SC_PROJ_ENGMT_CREATE_UPD_SRV.Demand",
+          "keys": [
+            {
+              "ref": [
+                "ProjectID"
+              ],
+              "$generatedFieldName": "DemandSet_ProjectID"
+            },
+            {
+              "ref": [
+                "WorkPackageID"
+              ],
+              "$generatedFieldName": "DemandSet_WorkPackageID"
+            },
+            {
+              "ref": [
+                "WorkPackageName"
+              ],
+              "$generatedFieldName": "DemandSet_WorkPackageName"
+            },
+            {
+              "ref": [
+                "ResType"
+              ],
+              "$generatedFieldName": "DemandSet_ResType"
+            },
+            {
+              "ref": [
+                "ResourceId"
+              ],
+              "$generatedFieldName": "DemandSet_ResourceId"
+            },
+            {
+              "ref": [
+                "Workitem"
+              ],
+              "$generatedFieldName": "DemandSet_Workitem"
+            },
+            {
+              "ref": [
+                "DelvryServOrg"
+              ],
+              "$generatedFieldName": "DemandSet_DelvryServOrg"
+            }
+          ]
+        },
+        "WorkItemSet": {
+          "@cds.persistence.name": "WORKITEMSET",
+          "type": "cds.Association",
+          "target": "CPD.SC_PROJ_ENGMT_CREATE_UPD_SRV.WorkItem",
+          "keys": [
+            {
+              "ref": [
+                "ProjectID"
+              ],
+              "$generatedFieldName": "WorkItemSet_ProjectID"
+            },
+            {
+              "ref": [
+                "Workitem"
+              ],
+              "$generatedFieldName": "WorkItemSet_Workitem"
+            },
+            {
+              "ref": [
+                "WorkPackageID"
+              ],
+              "$generatedFieldName": "WorkItemSet_WorkPackageID"
+            },
+            {
+              "ref": [
+                "WorkPackageName"
+              ],
+              "$generatedFieldName": "WorkItemSet_WorkPackageName"
+            }
+          ]
+        },
+        "DemandSet_ProjectID": {
+          "@cds.persistence.name": "DEMANDSET_PROJECTID",
+          "@odata.foreignKey4": "DemandSet",
+          "type": "cds.String",
+          "length": 40
+        },
+        "DemandSet_WorkPackageID": {
+          "@cds.persistence.name": "DEMANDSET_WORKPACKAGEID",
+          "@odata.foreignKey4": "DemandSet",
+          "type": "cds.String",
+          "length": 50
+        },
+        "DemandSet_WorkPackageName": {
+          "@cds.persistence.name": "DEMANDSET_WORKPACKAGENAME",
+          "@odata.foreignKey4": "DemandSet",
+          "type": "cds.String",
+          "length": 60
+        },
+        "DemandSet_ResType": {
+          "@cds.persistence.name": "DEMANDSET_RESTYPE",
+          "@odata.foreignKey4": "DemandSet",
+          "type": "cds.String",
+          "length": 4
+        },
+        "DemandSet_ResourceId": {
+          "@cds.persistence.name": "DEMANDSET_RESOURCEID",
+          "@odata.foreignKey4": "DemandSet",
+          "type": "cds.String",
+          "length": 40
+        },
+        "DemandSet_Workitem": {
+          "@cds.persistence.name": "DEMANDSET_WORKITEM",
+          "@odata.foreignKey4": "DemandSet",
+          "type": "cds.String",
+          "length": 10
+        },
+        "DemandSet_DelvryServOrg": {
+          "@cds.persistence.name": "DEMANDSET_DELVRYSERVORG",
+          "@odata.foreignKey4": "DemandSet",
+          "type": "cds.String",
+          "length": 5
+        },
+        "WorkItemSet_ProjectID": {
+          "@cds.persistence.name": "WORKITEMSET_PROJECTID",
+          "@odata.foreignKey4": "WorkItemSet",
+          "type": "cds.String",
+          "length": 40
+        },
+        "WorkItemSet_Workitem": {
+          "@cds.persistence.name": "WORKITEMSET_WORKITEM",
+          "@odata.foreignKey4": "WorkItemSet",
+          "type": "cds.String",
+          "length": 10
+        },
+        "WorkItemSet_WorkPackageID": {
+          "@cds.persistence.name": "WORKITEMSET_WORKPACKAGEID",
+          "@odata.foreignKey4": "WorkItemSet",
+          "type": "cds.String",
+          "length": 50
+        },
+        "WorkItemSet_WorkPackageName": {
+          "@cds.persistence.name": "WORKITEMSET_WORKPACKAGENAME",
+          "@odata.foreignKey4": "WorkItemSet",
+          "type": "cds.String",
+          "length": 60
+        }
+      }
+    },
+    "CPD_SC_EXTERNAL_SERVICES_SRV.PlanData": {
+      "kind": "entity",
+      "@cds.persistence.name": "CPD_SC_EXTERNAL_SERVICES_SRV_PLANDATA",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "ProjectID": {
+          "@cds.persistence.name": "PROJECTID",
+          "key": true,
+          "type": "cds.String",
+          "length": 40
+        },
+        "ResType": {
+          "@cds.persistence.name": "RESTYPE",
+          "key": true,
+          "type": "cds.String",
+          "length": 4
+        },
+        "WorkPackageID": {
+          "@cds.persistence.name": "WORKPACKAGEID",
+          "key": true,
+          "type": "cds.String",
+          "length": 50
+        },
+        "ResourceId": {
+          "@cds.persistence.name": "RESOURCEID",
+          "key": true,
+          "type": "cds.String",
+          "length": 40
+        },
+        "Version": {
+          "@cds.persistence.name": "VERSION",
+          "key": true,
+          "type": "cds.String",
+          "length": 28
+        },
+        "Employee": {
+          "@cds.persistence.name": "EMPLOYEE",
+          "key": true,
+          "type": "cds.String",
+          "length": 8
+        },
+        "Confirmed": {
+          "@cds.persistence.name": "CONFIRMED",
+          "key": true,
+          "type": "cds.String",
+          "length": 1
+        },
+        "WorkitemId": {
+          "@cds.persistence.name": "WORKITEMID",
+          "key": true,
+          "type": "cds.String",
+          "length": 10
+        },
+        "DelvryServOrg": {
+          "@cds.persistence.name": "DELVRYSERVORG",
           "key": true,
           "type": "cds.String",
           "length": 5
         },
-        "name": {
-          "@Common.Label": "{i18n>Name}",
-          "@cds.persistence.name": "NAME",
-          "localized": false,
+        "BillingControlCategory": {
+          "@cds.persistence.name": "BILLINGCONTROLCATEGORY",
           "type": "cds.String",
-          "length": 255
+          "length": 8
         },
-        "descr": {
-          "@Common.Label": "{i18n>Description}",
-          "@cds.persistence.name": "DESCR",
-          "localized": false,
+        "BillingControlCategoryID": {
+          "@cds.persistence.name": "BILLINGCONTROLCATEGORYID",
           "type": "cds.String",
-          "length": 1000
+          "length": 8
         },
-        "code": {
-          "@Common.Label": "{i18n>CountryCode}",
-          "@cds.persistence.name": "CODE",
-          "key": true,
+        "EmployeeName": {
+          "@cds.persistence.name": "EMPLOYEENAME",
+          "type": "cds.LargeString"
+        },
+        "Wpname": {
+          "@cds.persistence.name": "WPNAME",
+          "type": "cds.String",
+          "length": 60
+        },
+        "ResTypeText": {
+          "@cds.persistence.name": "RESTYPETEXT",
+          "type": "cds.LargeString"
+        },
+        "ResourceText": {
+          "@cds.persistence.name": "RESOURCETEXT",
+          "type": "cds.LargeString"
+        },
+        "Uom": {
+          "@cds.persistence.name": "UOM",
           "type": "cds.String",
           "length": 3
+        },
+        "Period": {
+          "@cds.persistence.name": "PERIOD",
+          "type": "cds.String",
+          "length": 3
+        },
+        "FcYear": {
+          "@cds.persistence.name": "FCYEAR",
+          "type": "cds.String",
+          "length": 4
+        },
+        "WorkitemName": {
+          "@cds.persistence.name": "WORKITEMNAME",
+          "type": "cds.LargeString"
+        },
+        "Effort": {
+          "@cds.persistence.name": "EFFORT",
+          "type": "cds.Decimal",
+          "precision": 15,
+          "scale": 3
+        },
+        "DelvryServOrgT": {
+          "@cds.persistence.name": "DELVRYSERVORGT",
+          "type": "cds.LargeString"
+        },
+        "ToStaffData": {
+          "@cds.persistence.name": "TOSTAFFDATA",
+          "type": "cds.Association",
+          "target": "CPD_SC_EXTERNAL_SERVICES_SRV.StaffingData",
+          "keys": [
+            {
+              "ref": [
+                "ProjectID"
+              ],
+              "$generatedFieldName": "ToStaffData_ProjectID"
+            },
+            {
+              "ref": [
+                "WorkPackageID"
+              ],
+              "$generatedFieldName": "ToStaffData_WorkPackageID"
+            },
+            {
+              "ref": [
+                "ResType"
+              ],
+              "$generatedFieldName": "ToStaffData_ResType"
+            },
+            {
+              "ref": [
+                "ResourceId"
+              ],
+              "$generatedFieldName": "ToStaffData_ResourceId"
+            },
+            {
+              "ref": [
+                "WorkitemId"
+              ],
+              "$generatedFieldName": "ToStaffData_WorkitemId"
+            }
+          ]
+        },
+        "ToStaffData_ProjectID": {
+          "@cds.persistence.name": "TOSTAFFDATA_PROJECTID",
+          "@odata.foreignKey4": "ToStaffData",
+          "type": "cds.String",
+          "length": 40
+        },
+        "ToStaffData_WorkPackageID": {
+          "@cds.persistence.name": "TOSTAFFDATA_WORKPACKAGEID",
+          "@odata.foreignKey4": "ToStaffData",
+          "type": "cds.String",
+          "length": 50
+        },
+        "ToStaffData_ResType": {
+          "@cds.persistence.name": "TOSTAFFDATA_RESTYPE",
+          "@odata.foreignKey4": "ToStaffData",
+          "type": "cds.String",
+          "length": 4
+        },
+        "ToStaffData_ResourceId": {
+          "@cds.persistence.name": "TOSTAFFDATA_RESOURCEID",
+          "@odata.foreignKey4": "ToStaffData",
+          "type": "cds.String",
+          "length": 40
+        },
+        "ToStaffData_WorkitemId": {
+          "@cds.persistence.name": "TOSTAFFDATA_WORKITEMID",
+          "@odata.foreignKey4": "ToStaffData",
+          "type": "cds.String",
+          "length": 10
         }
       }
     },
-    "CatalogService.Orders": {
+    "CPD_SC_EXTERNAL_SERVICES_SRV.Project": {
       "kind": "entity",
-      "@cds.persistence.name": "CATALOGSERVICE_ORDERS",
-      "query": {
-        "SELECT": {
-          "from": {
-            "ref": [
-              "my.bookshop.Orders"
-            ]
-          }
-        }
-      },
+      "@cds.persistence.name": "CPD_SC_EXTERNAL_SERVICES_SRV_PROJECT",
+      "@cds.persistence.skip": true,
       "elements": {
-        "modifiedAt": {
-          "@Common.Label": "{i18n>ChangedAt}",
-          "@Core.Computed": true,
-          "@Core.Immutable": true,
-          "@UI.HiddenFilter": true,
-          "@cds.on.update": {
-            "=": "$now"
-          },
-          "@cds.persistence.name": "MODIFIEDAT",
-          "@odata.etag": true,
-          "@odata.on.update": {
-            "#": "now"
-          },
-          "type": "cds.DateTime"
-        },
-        "createdAt": {
-          "@Common.Label": "{i18n>CreatedAt}",
-          "@Core.Computed": true,
-          "@Core.Immutable": true,
-          "@UI.HiddenFilter": true,
-          "@cds.on.insert": {
-            "=": "$now"
-          },
-          "@cds.persistence.name": "CREATEDAT",
-          "@odata.on.insert": {
-            "#": "now"
-          },
-          "type": "cds.DateTime"
-        },
-        "createdBy": {
-          "@Common.Label": "{i18n>CreatedBy}",
-          "@Core.Computed": true,
-          "@Core.Immutable": true,
-          "@UI.HiddenFilter": true,
-          "@cds.on.insert": {
-            "=": "$user"
-          },
-          "@cds.persistence.name": "CREATEDBY",
-          "@description": "{i18n>UserID.Description}",
-          "@odata.on.insert": {
-            "#": "user"
-          },
-          "type": "cds.String",
-          "length": 255
-        },
-        "modifiedBy": {
-          "@Common.Label": "{i18n>ChangedBy}",
-          "@Core.Computed": true,
-          "@Core.Immutable": true,
-          "@UI.HiddenFilter": true,
-          "@cds.on.update": {
-            "=": "$user"
-          },
-          "@cds.persistence.name": "MODIFIEDBY",
-          "@description": "{i18n>UserID.Description}",
-          "@odata.on.update": {
-            "#": "user"
-          },
-          "type": "cds.String",
-          "length": 255
-        },
-        "ID": {
-          "@cds.persistence.name": "ID",
+        "ProjectID": {
+          "@cds.persistence.name": "PROJECTID",
           "key": true,
-          "type": "cds.UUID"
+          "type": "cds.String",
+          "length": 40
         },
-        "book": {
-          "@cds.persistence.name": "BOOK",
+        "RestrictTimePosting": {
+          "@cds.persistence.name": "RESTRICTTIMEPOSTING",
+          "type": "cds.String",
+          "length": 1
+        },
+        "ChangedBy": {
+          "@cds.persistence.name": "CHANGEDBY",
+          "type": "cds.String",
+          "length": 12
+        },
+        "ProfitCenter": {
+          "@cds.persistence.name": "PROFITCENTER",
+          "type": "cds.String",
+          "length": 10
+        },
+        "ChangedOn": {
+          "@cds.persistence.name": "CHANGEDON",
+          "type": "cds.Timestamp"
+        },
+        "ProfitCenterName": {
+          "@cds.persistence.name": "PROFITCENTERNAME",
+          "type": "cds.String",
+          "length": 20
+        },
+        "ProjectName": {
+          "@cds.persistence.name": "PROJECTNAME",
+          "type": "cds.String",
+          "length": 40
+        },
+        "ProjectStage": {
+          "@cds.persistence.name": "PROJECTSTAGE",
+          "type": "cds.String",
+          "length": 4
+        },
+        "StageDesc": {
+          "@cds.persistence.name": "STAGEDESC",
+          "type": "cds.String",
+          "length": 40
+        },
+        "StartDate": {
+          "@cds.persistence.name": "STARTDATE",
+          "type": "cds.Timestamp"
+        },
+        "EndDate": {
+          "@cds.persistence.name": "ENDDATE",
+          "type": "cds.Timestamp"
+        },
+        "Customer": {
+          "@cds.persistence.name": "CUSTOMER",
+          "type": "cds.String",
+          "length": 10
+        },
+        "CustomerName": {
+          "@cds.persistence.name": "CUSTOMERNAME",
+          "type": "cds.String",
+          "length": 166
+        },
+        "ProjManagerId": {
+          "@cds.persistence.name": "PROJMANAGERID",
+          "type": "cds.String",
+          "length": 8
+        },
+        "ProjManagerName": {
+          "@cds.persistence.name": "PROJMANAGERNAME",
+          "type": "cds.String",
+          "length": 80
+        },
+        "ProjAccountantId": {
+          "@cds.persistence.name": "PROJACCOUNTANTID",
+          "type": "cds.String",
+          "length": 8
+        },
+        "ProjAccountantName": {
+          "@cds.persistence.name": "PROJACCOUNTANTNAME",
+          "type": "cds.String",
+          "length": 80
+        },
+        "ProjControllerId": {
+          "@cds.persistence.name": "PROJCONTROLLERID",
+          "type": "cds.String",
+          "length": 8
+        },
+        "ProjControllerName": {
+          "@cds.persistence.name": "PROJCONTROLLERNAME",
+          "type": "cds.String",
+          "length": 80
+        },
+        "ProjPartnerId": {
+          "@cds.persistence.name": "PROJPARTNERID",
+          "type": "cds.String",
+          "length": 8
+        },
+        "ProjPartnerName": {
+          "@cds.persistence.name": "PROJPARTNERNAME",
+          "type": "cds.String",
+          "length": 80
+        },
+        "CostCenter": {
+          "@cds.persistence.name": "COSTCENTER",
+          "type": "cds.String",
+          "length": 10
+        },
+        "CostCenterName": {
+          "@cds.persistence.name": "COSTCENTERNAME",
+          "type": "cds.String",
+          "length": 20
+        },
+        "ProjectCategory": {
+          "@cds.persistence.name": "PROJECTCATEGORY",
+          "type": "cds.String",
+          "length": 1
+        },
+        "Currency": {
+          "@cds.persistence.name": "CURRENCY",
+          "type": "cds.String",
+          "length": 5
+        },
+        "Currencyname": {
+          "@cds.persistence.name": "CURRENCYNAME",
+          "type": "cds.String",
+          "length": 40
+        },
+        "OrgID": {
+          "@cds.persistence.name": "ORGID",
+          "type": "cds.String",
+          "length": 5
+        },
+        "OrgDesc": {
+          "@cds.persistence.name": "ORGDESC",
+          "type": "cds.String",
+          "length": 40
+        },
+        "Confidential": {
+          "@cds.persistence.name": "CONFIDENTIAL",
+          "type": "cds.String",
+          "length": 1
+        },
+        "WorkpackageSet": {
+          "@cds.persistence.name": "WORKPACKAGESET",
           "type": "cds.Association",
-          "target": "CatalogService.Books",
+          "target": "CPD_SC_EXTERNAL_SERVICES_SRV.Workpackage",
           "keys": [
             {
               "ref": [
-                "ID"
+                "WorkPackageID"
               ],
-              "$generatedFieldName": "book_ID"
+              "$generatedFieldName": "WorkpackageSet_WorkPackageID"
             }
           ]
         },
-        "country": {
-          "@Common.Label": "{i18n>Country}",
-          "@Common.ValueList.viaAssociation": {
-            "=": "country"
-          },
-          "@cds.persistence.name": "COUNTRY",
-          "@description": "{i18n>CountryCode.Description}",
-          "type": "cds.Association",
-          "target": "CatalogService.Countries",
-          "keys": [
-            {
-              "ref": [
-                "code"
-              ],
-              "$generatedFieldName": "country_code"
-            }
-          ]
+        "WorkpackageSet_WorkPackageID": {
+          "@cds.persistence.name": "WORKPACKAGESET_WORKPACKAGEID",
+          "@odata.foreignKey4": "WorkpackageSet",
+          "type": "cds.String",
+          "length": 50
+        }
+      }
+    },
+    "CPD_SC_EXTERNAL_SERVICES_SRV.StaffingData": {
+      "kind": "entity",
+      "@cds.persistence.name": "CPD_SC_EXTERNAL_SERVICES_SRV_STAFFINGDATA",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "ProjectID": {
+          "@cds.persistence.name": "PROJECTID",
+          "key": true,
+          "type": "cds.String",
+          "length": 40
         },
-        "amount": {
-          "@cds.persistence.name": "AMOUNT",
-          "type": "cds.Integer"
+        "WorkPackageID": {
+          "@cds.persistence.name": "WORKPACKAGEID",
+          "key": true,
+          "type": "cds.String",
+          "length": 50
         },
-        "book_ID": {
-          "@cds.persistence.name": "BOOK_ID",
-          "@odata.foreignKey4": "book",
-          "type": "cds.Integer"
+        "ResType": {
+          "@cds.persistence.name": "RESTYPE",
+          "key": true,
+          "type": "cds.String",
+          "length": 4
         },
-        "country_code": {
-          "@Common.Label": "{i18n>Country}",
-          "@cds.persistence.name": "COUNTRY_CODE",
-          "@description": "{i18n>CountryCode.Description}",
-          "@odata.foreignKey4": "country",
+        "ResourceId": {
+          "@cds.persistence.name": "RESOURCEID",
+          "key": true,
+          "type": "cds.String",
+          "length": 40
+        },
+        "WorkitemId": {
+          "@cds.persistence.name": "WORKITEMID",
+          "key": true,
+          "type": "cds.String",
+          "length": 10
+        },
+        "BillingControlCategory": {
+          "@cds.persistence.name": "BILLINGCONTROLCATEGORY",
+          "type": "cds.String",
+          "length": 60
+        },
+        "WPname": {
+          "@cds.persistence.name": "WPNAME",
+          "type": "cds.String",
+          "length": 60
+        },
+        "ResTypeText": {
+          "@cds.persistence.name": "RESTYPETEXT",
+          "type": "cds.LargeString"
+        },
+        "ResourceText": {
+          "@cds.persistence.name": "RESOURCETEXT",
+          "type": "cds.LargeString"
+        },
+        "Uom": {
+          "@cds.persistence.name": "UOM",
           "type": "cds.String",
           "length": 3
+        },
+        "Version": {
+          "@cds.persistence.name": "VERSION",
+          "type": "cds.String",
+          "length": 28
+        },
+        "Period": {
+          "@cds.persistence.name": "PERIOD",
+          "type": "cds.String",
+          "length": 3
+        },
+        "FcYear": {
+          "@cds.persistence.name": "FCYEAR",
+          "type": "cds.String",
+          "length": 4
+        },
+        "StaffedEmployee": {
+          "@cds.persistence.name": "STAFFEDEMPLOYEE",
+          "type": "cds.String",
+          "length": 8
+        },
+        "Confirmed": {
+          "@cds.persistence.name": "CONFIRMED",
+          "type": "cds.String",
+          "length": 1
+        },
+        "WorkitemName": {
+          "@cds.persistence.name": "WORKITEMNAME",
+          "type": "cds.LargeString"
+        },
+        "StaffedEffort": {
+          "@cds.persistence.name": "STAFFEDEFFORT",
+          "type": "cds.Decimal",
+          "precision": 15,
+          "scale": 3
+        },
+        "StaffedEmpDelvryServOrg": {
+          "@cds.persistence.name": "STAFFEDEMPDELVRYSERVORG",
+          "type": "cds.String",
+          "length": 5
+        },
+        "StaffedEmpDelvryServOrgT": {
+          "@cds.persistence.name": "STAFFEDEMPDELVRYSERVORGT",
+          "type": "cds.LargeString"
+        },
+        "StaffedEmployeeName": {
+          "@cds.persistence.name": "STAFFEDEMPLOYEENAME",
+          "type": "cds.LargeString"
         }
-      },
-      "$syntax": "projection"
+      }
+    },
+    "CPD_SC_EXTERNAL_SERVICES_SRV.WorkItem": {
+      "kind": "entity",
+      "@cds.persistence.name": "CPD_SC_EXTERNAL_SERVICES_SRV_WORKITEM",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "Workitem": {
+          "@cds.persistence.name": "WORKITEM",
+          "key": true,
+          "type": "cds.String",
+          "length": 10
+        },
+        "WorkpackageID": {
+          "@cds.persistence.name": "WORKPACKAGEID",
+          "key": true,
+          "type": "cds.String",
+          "length": 50
+        },
+        "Workitemname": {
+          "@cds.persistence.name": "WORKITEMNAME",
+          "type": "cds.String",
+          "length": 40
+        },
+        "Workitemisinactive": {
+          "@cds.persistence.name": "WORKITEMISINACTIVE",
+          "type": "cds.String",
+          "length": 1
+        }
+      }
+    },
+    "CPD_SC_EXTERNAL_SERVICES_SRV.Workpackage": {
+      "kind": "entity",
+      "@cds.persistence.name": "CPD_SC_EXTERNAL_SERVICES_SRV_WORKPACKAGE",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "WorkPackageID": {
+          "@cds.persistence.name": "WORKPACKAGEID",
+          "key": true,
+          "type": "cds.String",
+          "length": 50
+        },
+        "WorkPackageUnitText": {
+          "@cds.persistence.name": "WORKPACKAGEUNITTEXT",
+          "type": "cds.String",
+          "length": 40
+        },
+        "WorkPackageType": {
+          "@cds.persistence.name": "WORKPACKAGETYPE",
+          "type": "cds.String",
+          "length": 1
+        },
+        "UnitOfMeasure": {
+          "@cds.persistence.name": "UNITOFMEASURE",
+          "type": "cds.String",
+          "length": 30
+        },
+        "Quantity": {
+          "@cds.persistence.name": "QUANTITY",
+          "type": "cds.String",
+          "length": 15
+        },
+        "ChangedOn": {
+          "@cds.persistence.name": "CHANGEDON",
+          "type": "cds.Timestamp"
+        },
+        "ProjectID": {
+          "@cds.persistence.name": "PROJECTID",
+          "type": "cds.String",
+          "length": 40
+        },
+        "ChangedBy": {
+          "@cds.persistence.name": "CHANGEDBY",
+          "type": "cds.String",
+          "length": 12
+        },
+        "WorkPackageName": {
+          "@cds.persistence.name": "WORKPACKAGENAME",
+          "type": "cds.String",
+          "length": 60
+        },
+        "WPStartDate": {
+          "@cds.persistence.name": "WPSTARTDATE",
+          "type": "cds.Timestamp"
+        },
+        "WPEndDate": {
+          "@cds.persistence.name": "WPENDDATE",
+          "type": "cds.Timestamp"
+        },
+        "ProjectName": {
+          "@cds.persistence.name": "PROJECTNAME",
+          "type": "cds.String",
+          "length": 40
+        },
+        "WorkItemSet": {
+          "@cds.persistence.name": "WORKITEMSET",
+          "type": "cds.Association",
+          "target": "CPD_SC_EXTERNAL_SERVICES_SRV.WorkItem",
+          "keys": [
+            {
+              "ref": [
+                "Workitem"
+              ],
+              "$generatedFieldName": "WorkItemSet_Workitem"
+            },
+            {
+              "ref": [
+                "WorkpackageID"
+              ],
+              "$generatedFieldName": "WorkItemSet_WorkpackageID"
+            }
+          ]
+        },
+        "PlanDataSet": {
+          "@cds.persistence.name": "PLANDATASET",
+          "type": "cds.Association",
+          "target": "CPD_SC_EXTERNAL_SERVICES_SRV.PlanData",
+          "keys": [
+            {
+              "ref": [
+                "ProjectID"
+              ],
+              "$generatedFieldName": "PlanDataSet_ProjectID"
+            },
+            {
+              "ref": [
+                "ResType"
+              ],
+              "$generatedFieldName": "PlanDataSet_ResType"
+            },
+            {
+              "ref": [
+                "WorkPackageID"
+              ],
+              "$generatedFieldName": "PlanDataSet_WorkPackageID"
+            },
+            {
+              "ref": [
+                "ResourceId"
+              ],
+              "$generatedFieldName": "PlanDataSet_ResourceId"
+            },
+            {
+              "ref": [
+                "Version"
+              ],
+              "$generatedFieldName": "PlanDataSet_Version"
+            },
+            {
+              "ref": [
+                "Employee"
+              ],
+              "$generatedFieldName": "PlanDataSet_Employee"
+            },
+            {
+              "ref": [
+                "Confirmed"
+              ],
+              "$generatedFieldName": "PlanDataSet_Confirmed"
+            },
+            {
+              "ref": [
+                "WorkitemId"
+              ],
+              "$generatedFieldName": "PlanDataSet_WorkitemId"
+            },
+            {
+              "ref": [
+                "DelvryServOrg"
+              ],
+              "$generatedFieldName": "PlanDataSet_DelvryServOrg"
+            }
+          ]
+        },
+        "WorkItemSet_Workitem": {
+          "@cds.persistence.name": "WORKITEMSET_WORKITEM",
+          "@odata.foreignKey4": "WorkItemSet",
+          "type": "cds.String",
+          "length": 10
+        },
+        "WorkItemSet_WorkpackageID": {
+          "@cds.persistence.name": "WORKITEMSET_WORKPACKAGEID",
+          "@odata.foreignKey4": "WorkItemSet",
+          "type": "cds.String",
+          "length": 50
+        },
+        "PlanDataSet_ProjectID": {
+          "@cds.persistence.name": "PLANDATASET_PROJECTID",
+          "@odata.foreignKey4": "PlanDataSet",
+          "type": "cds.String",
+          "length": 40
+        },
+        "PlanDataSet_ResType": {
+          "@cds.persistence.name": "PLANDATASET_RESTYPE",
+          "@odata.foreignKey4": "PlanDataSet",
+          "type": "cds.String",
+          "length": 4
+        },
+        "PlanDataSet_WorkPackageID": {
+          "@cds.persistence.name": "PLANDATASET_WORKPACKAGEID",
+          "@odata.foreignKey4": "PlanDataSet",
+          "type": "cds.String",
+          "length": 50
+        },
+        "PlanDataSet_ResourceId": {
+          "@cds.persistence.name": "PLANDATASET_RESOURCEID",
+          "@odata.foreignKey4": "PlanDataSet",
+          "type": "cds.String",
+          "length": 40
+        },
+        "PlanDataSet_Version": {
+          "@cds.persistence.name": "PLANDATASET_VERSION",
+          "@odata.foreignKey4": "PlanDataSet",
+          "type": "cds.String",
+          "length": 28
+        },
+        "PlanDataSet_Employee": {
+          "@cds.persistence.name": "PLANDATASET_EMPLOYEE",
+          "@odata.foreignKey4": "PlanDataSet",
+          "type": "cds.String",
+          "length": 8
+        },
+        "PlanDataSet_Confirmed": {
+          "@cds.persistence.name": "PLANDATASET_CONFIRMED",
+          "@odata.foreignKey4": "PlanDataSet",
+          "type": "cds.String",
+          "length": 1
+        },
+        "PlanDataSet_WorkitemId": {
+          "@cds.persistence.name": "PLANDATASET_WORKITEMID",
+          "@odata.foreignKey4": "PlanDataSet",
+          "type": "cds.String",
+          "length": 10
+        },
+        "PlanDataSet_DelvryServOrg": {
+          "@cds.persistence.name": "PLANDATASET_DELVRYSERVORG",
+          "@odata.foreignKey4": "PlanDataSet",
+          "type": "cds.String",
+          "length": 5
+        }
+      }
     },
     "Country": {
       "kind": "type",
@@ -527,9 +1919,650 @@
         }
       }
     },
-    "localized.CatalogService.Books": {
+    "emcdemo": {
+      "kind": "service",
+      "@source": "srv/cat-service.cds"
+    },
+    "emcdemo.Authors": {
       "kind": "entity",
-      "@cds.persistence.name": "LOCALIZED_CATALOGSERVICE_BOOKS",
+      "@cds.persistence.name": "EMCDEMO_AUTHORS",
+      "query": {
+        "SELECT": {
+          "from": {
+            "ref": [
+              "my.bookshop.Authors"
+            ]
+          }
+        }
+      },
+      "elements": {
+        "ID": {
+          "@cds.persistence.name": "ID",
+          "key": true,
+          "type": "cds.Integer"
+        },
+        "name": {
+          "@cds.persistence.name": "NAME",
+          "type": "cds.String"
+        },
+        "books": {
+          "@cds.persistence.name": "BOOKS",
+          "type": "cds.Association",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "emcdemo.Books",
+          "on": [
+            {
+              "ref": [
+                "books",
+                "author"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "$self"
+              ]
+            }
+          ]
+        }
+      },
+      "$syntax": "projection"
+    },
+    "emcdemo.Books": {
+      "kind": "entity",
+      "@cds.persistence.name": "EMCDEMO_BOOKS",
+      "query": {
+        "SELECT": {
+          "from": {
+            "ref": [
+              "my.bookshop.Books"
+            ]
+          }
+        }
+      },
+      "elements": {
+        "ID": {
+          "@cds.persistence.name": "ID",
+          "key": true,
+          "type": "cds.Integer"
+        },
+        "title": {
+          "@cds.persistence.name": "TITLE",
+          "localized": true,
+          "type": "cds.String"
+        },
+        "author": {
+          "@cds.persistence.name": "AUTHOR",
+          "type": "cds.Association",
+          "target": "emcdemo.Authors",
+          "keys": [
+            {
+              "ref": [
+                "ID"
+              ],
+              "$generatedFieldName": "author_ID"
+            }
+          ]
+        },
+        "stock": {
+          "@cds.persistence.name": "STOCK",
+          "type": "cds.Integer"
+        },
+        "texts": {
+          "@cds.persistence.name": "TEXTS",
+          "type": "cds.Composition",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "emcdemo.Books_texts",
+          "on": [
+            {
+              "ref": [
+                "texts",
+                "ID"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "ID"
+              ]
+            }
+          ]
+        },
+        "localized": {
+          "@cds.persistence.name": "LOCALIZED",
+          "type": "cds.Association",
+          "target": "emcdemo.Books_texts",
+          "on": [
+            {
+              "ref": [
+                "localized",
+                "ID"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "ID"
+              ]
+            },
+            "and",
+            {
+              "ref": [
+                "localized",
+                "locale"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "$user",
+                "locale"
+              ]
+            }
+          ]
+        },
+        "author_ID": {
+          "@cds.persistence.name": "AUTHOR_ID",
+          "@odata.foreignKey4": "author",
+          "type": "cds.Integer"
+        }
+      },
+      "$syntax": "projection"
+    },
+    "emcdemo.Books_texts": {
+      "kind": "entity",
+      "@cds.autoexpose": true,
+      "@cds.autoexposed": true,
+      "@cds.persistence.name": "EMCDEMO_BOOKS_TEXTS",
+      "@odata.draft.enabled": false,
+      "query": {
+        "SELECT": {
+          "from": {
+            "ref": [
+              "my.bookshop.Books_texts"
+            ]
+          }
+        }
+      },
+      "elements": {
+        "locale": {
+          "@cds.persistence.name": "LOCALE",
+          "key": true,
+          "type": "cds.String",
+          "length": 5
+        },
+        "ID": {
+          "@cds.persistence.name": "ID",
+          "key": true,
+          "type": "cds.Integer"
+        },
+        "title": {
+          "@cds.persistence.name": "TITLE",
+          "localized": false,
+          "type": "cds.String"
+        }
+      }
+    },
+    "emcdemo.Countries": {
+      "kind": "entity",
+      "@UI.Identification": [
+        {
+          "=": "name"
+        }
+      ],
+      "@cds.autoexpose": true,
+      "@cds.autoexposed": true,
+      "@cds.odata.valuelist": true,
+      "@cds.persistence.name": "EMCDEMO_COUNTRIES",
+      "@cds.persistence.skip": "if-unused",
+      "query": {
+        "SELECT": {
+          "from": {
+            "ref": [
+              "sap.common.Countries"
+            ]
+          }
+        }
+      },
+      "elements": {
+        "name": {
+          "@Common.Label": "{i18n>Name}",
+          "@cds.persistence.name": "NAME",
+          "localized": true,
+          "type": "cds.String",
+          "length": 255
+        },
+        "descr": {
+          "@Common.Label": "{i18n>Description}",
+          "@cds.persistence.name": "DESCR",
+          "localized": true,
+          "type": "cds.String",
+          "length": 1000
+        },
+        "code": {
+          "@Common.Label": "{i18n>CountryCode}",
+          "@cds.persistence.name": "CODE",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "texts": {
+          "@cds.persistence.name": "TEXTS",
+          "type": "cds.Composition",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "emcdemo.Countries_texts",
+          "on": [
+            {
+              "ref": [
+                "texts",
+                "code"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "code"
+              ]
+            }
+          ]
+        },
+        "localized": {
+          "@cds.persistence.name": "LOCALIZED",
+          "type": "cds.Association",
+          "target": "emcdemo.Countries_texts",
+          "on": [
+            {
+              "ref": [
+                "localized",
+                "code"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "code"
+              ]
+            },
+            "and",
+            {
+              "ref": [
+                "localized",
+                "locale"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "$user",
+                "locale"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "emcdemo.Countries_texts": {
+      "kind": "entity",
+      "@cds.autoexpose": true,
+      "@cds.autoexposed": true,
+      "@cds.persistence.name": "EMCDEMO_COUNTRIES_TEXTS",
+      "@odata.draft.enabled": false,
+      "query": {
+        "SELECT": {
+          "from": {
+            "ref": [
+              "sap.common.Countries_texts"
+            ]
+          }
+        }
+      },
+      "elements": {
+        "locale": {
+          "@cds.persistence.name": "LOCALE",
+          "key": true,
+          "type": "cds.String",
+          "length": 5
+        },
+        "name": {
+          "@Common.Label": "{i18n>Name}",
+          "@cds.persistence.name": "NAME",
+          "localized": false,
+          "type": "cds.String",
+          "length": 255
+        },
+        "descr": {
+          "@Common.Label": "{i18n>Description}",
+          "@cds.persistence.name": "DESCR",
+          "localized": false,
+          "type": "cds.String",
+          "length": 1000
+        },
+        "code": {
+          "@Common.Label": "{i18n>CountryCode}",
+          "@cds.persistence.name": "CODE",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        }
+      }
+    },
+    "emcdemo.Orders": {
+      "kind": "entity",
+      "@cds.persistence.name": "EMCDEMO_ORDERS",
+      "query": {
+        "SELECT": {
+          "from": {
+            "ref": [
+              "my.bookshop.Orders"
+            ]
+          }
+        }
+      },
+      "elements": {
+        "modifiedAt": {
+          "@Common.Label": "{i18n>ChangedAt}",
+          "@Core.Computed": true,
+          "@Core.Immutable": true,
+          "@UI.HiddenFilter": true,
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@cds.persistence.name": "MODIFIEDAT",
+          "@odata.on.update": {
+            "#": "now"
+          },
+          "type": "cds.DateTime"
+        },
+        "createdAt": {
+          "@Common.Label": "{i18n>CreatedAt}",
+          "@Core.Computed": true,
+          "@Core.Immutable": true,
+          "@UI.HiddenFilter": true,
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.persistence.name": "CREATEDAT",
+          "@odata.on.insert": {
+            "#": "now"
+          },
+          "type": "cds.DateTime"
+        },
+        "createdBy": {
+          "@Common.Label": "{i18n>CreatedBy}",
+          "@Core.Computed": true,
+          "@Core.Immutable": true,
+          "@UI.HiddenFilter": true,
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.persistence.name": "CREATEDBY",
+          "@description": "{i18n>UserID.Description}",
+          "@odata.on.insert": {
+            "#": "user"
+          },
+          "type": "cds.String",
+          "length": 255
+        },
+        "modifiedBy": {
+          "@Common.Label": "{i18n>ChangedBy}",
+          "@Core.Computed": true,
+          "@Core.Immutable": true,
+          "@UI.HiddenFilter": true,
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@cds.persistence.name": "MODIFIEDBY",
+          "@description": "{i18n>UserID.Description}",
+          "@odata.on.update": {
+            "#": "user"
+          },
+          "type": "cds.String",
+          "length": 255
+        },
+        "ID": {
+          "@cds.persistence.name": "ID",
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "book": {
+          "@cds.persistence.name": "BOOK",
+          "type": "cds.Association",
+          "target": "emcdemo.Books",
+          "keys": [
+            {
+              "ref": [
+                "ID"
+              ],
+              "$generatedFieldName": "book_ID"
+            }
+          ]
+        },
+        "country": {
+          "@Common.Label": "{i18n>Country}",
+          "@Common.ValueList.viaAssociation": {
+            "=": "country"
+          },
+          "@cds.persistence.name": "COUNTRY",
+          "@description": "{i18n>CountryCode.Description}",
+          "type": "cds.Association",
+          "target": "emcdemo.Countries",
+          "keys": [
+            {
+              "ref": [
+                "code"
+              ],
+              "$generatedFieldName": "country_code"
+            }
+          ]
+        },
+        "amount": {
+          "@cds.persistence.name": "AMOUNT",
+          "type": "cds.Integer"
+        },
+        "book_ID": {
+          "@cds.persistence.name": "BOOK_ID",
+          "@odata.foreignKey4": "book",
+          "type": "cds.Integer"
+        },
+        "country_code": {
+          "@Common.Label": "{i18n>Country}",
+          "@cds.persistence.name": "COUNTRY_CODE",
+          "@description": "{i18n>CountryCode.Description}",
+          "@odata.foreignKey4": "country",
+          "type": "cds.String",
+          "length": 3
+        }
+      },
+      "$syntax": "projection"
+    },
+    "emcdemo.ProjectsRead": {
+      "kind": "entity",
+      "@cds.persistence.name": "EMCDEMO_PROJECTSREAD",
+      "@cds.persistence.skip": true,
+      "query": {
+        "SELECT": {
+          "from": {
+            "ref": [
+              "CPD_SC_EXTERNAL_SERVICES_SRV.Project"
+            ]
+          }
+        }
+      },
+      "elements": {
+        "ProjectID": {
+          "@cds.persistence.name": "PROJECTID",
+          "key": true,
+          "type": "cds.String",
+          "length": 40
+        },
+        "RestrictTimePosting": {
+          "@cds.persistence.name": "RESTRICTTIMEPOSTING",
+          "type": "cds.String",
+          "length": 1
+        },
+        "ChangedBy": {
+          "@cds.persistence.name": "CHANGEDBY",
+          "type": "cds.String",
+          "length": 12
+        },
+        "ProfitCenter": {
+          "@cds.persistence.name": "PROFITCENTER",
+          "type": "cds.String",
+          "length": 10
+        },
+        "ChangedOn": {
+          "@cds.persistence.name": "CHANGEDON",
+          "type": "cds.Timestamp"
+        },
+        "ProfitCenterName": {
+          "@cds.persistence.name": "PROFITCENTERNAME",
+          "type": "cds.String",
+          "length": 20
+        },
+        "ProjectName": {
+          "@cds.persistence.name": "PROJECTNAME",
+          "type": "cds.String",
+          "length": 40
+        },
+        "ProjectStage": {
+          "@cds.persistence.name": "PROJECTSTAGE",
+          "type": "cds.String",
+          "length": 4
+        },
+        "StageDesc": {
+          "@cds.persistence.name": "STAGEDESC",
+          "type": "cds.String",
+          "length": 40
+        },
+        "StartDate": {
+          "@cds.persistence.name": "STARTDATE",
+          "type": "cds.Timestamp"
+        },
+        "EndDate": {
+          "@cds.persistence.name": "ENDDATE",
+          "type": "cds.Timestamp"
+        },
+        "Customer": {
+          "@cds.persistence.name": "CUSTOMER",
+          "type": "cds.String",
+          "length": 10
+        },
+        "CustomerName": {
+          "@cds.persistence.name": "CUSTOMERNAME",
+          "type": "cds.String",
+          "length": 166
+        },
+        "ProjManagerId": {
+          "@cds.persistence.name": "PROJMANAGERID",
+          "type": "cds.String",
+          "length": 8
+        },
+        "ProjManagerName": {
+          "@cds.persistence.name": "PROJMANAGERNAME",
+          "type": "cds.String",
+          "length": 80
+        },
+        "ProjAccountantId": {
+          "@cds.persistence.name": "PROJACCOUNTANTID",
+          "type": "cds.String",
+          "length": 8
+        },
+        "ProjAccountantName": {
+          "@cds.persistence.name": "PROJACCOUNTANTNAME",
+          "type": "cds.String",
+          "length": 80
+        },
+        "ProjControllerId": {
+          "@cds.persistence.name": "PROJCONTROLLERID",
+          "type": "cds.String",
+          "length": 8
+        },
+        "ProjControllerName": {
+          "@cds.persistence.name": "PROJCONTROLLERNAME",
+          "type": "cds.String",
+          "length": 80
+        },
+        "ProjPartnerId": {
+          "@cds.persistence.name": "PROJPARTNERID",
+          "type": "cds.String",
+          "length": 8
+        },
+        "ProjPartnerName": {
+          "@cds.persistence.name": "PROJPARTNERNAME",
+          "type": "cds.String",
+          "length": 80
+        },
+        "CostCenter": {
+          "@cds.persistence.name": "COSTCENTER",
+          "type": "cds.String",
+          "length": 10
+        },
+        "CostCenterName": {
+          "@cds.persistence.name": "COSTCENTERNAME",
+          "type": "cds.String",
+          "length": 20
+        },
+        "ProjectCategory": {
+          "@cds.persistence.name": "PROJECTCATEGORY",
+          "type": "cds.String",
+          "length": 1
+        },
+        "Currency": {
+          "@cds.persistence.name": "CURRENCY",
+          "type": "cds.String",
+          "length": 5
+        },
+        "Currencyname": {
+          "@cds.persistence.name": "CURRENCYNAME",
+          "type": "cds.String",
+          "length": 40
+        },
+        "OrgID": {
+          "@cds.persistence.name": "ORGID",
+          "type": "cds.String",
+          "length": 5
+        },
+        "OrgDesc": {
+          "@cds.persistence.name": "ORGDESC",
+          "type": "cds.String",
+          "length": 40
+        },
+        "Confidential": {
+          "@cds.persistence.name": "CONFIDENTIAL",
+          "type": "cds.String",
+          "length": 1
+        },
+        "WorkpackageSet": {
+          "@cds.persistence.name": "WORKPACKAGESET",
+          "type": "cds.Association",
+          "target": "CPD_SC_EXTERNAL_SERVICES_SRV.Workpackage",
+          "keys": [
+            {
+              "ref": [
+                "WorkPackageID"
+              ],
+              "$generatedFieldName": "WorkpackageSet_WorkPackageID"
+            }
+          ]
+        },
+        "WorkpackageSet_WorkPackageID": {
+          "@cds.persistence.name": "WORKPACKAGESET_WORKPACKAGEID",
+          "@odata.foreignKey4": "WorkpackageSet",
+          "type": "cds.String",
+          "length": 50
+        }
+      },
+      "$syntax": "projection"
+    },
+    "localized.emcdemo.Books": {
+      "kind": "entity",
+      "@cds.persistence.name": "LOCALIZED_EMCDEMO_BOOKS",
       "@odata.draft.enabled": false,
       "query": {
         "SELECT": {
@@ -555,7 +2588,7 @@
         "author": {
           "@cds.persistence.name": "AUTHOR",
           "type": "cds.Association",
-          "target": "localized.my.bookshop.Authors",
+          "target": "emcdemo.Authors",
           "keys": [
             {
               "ref": [
@@ -575,7 +2608,7 @@
           "cardinality": {
             "max": "*"
           },
-          "target": "my.bookshop.Books_texts",
+          "target": "emcdemo.Books_texts",
           "on": [
             {
               "ref": [
@@ -594,7 +2627,7 @@
         "localized": {
           "@cds.persistence.name": "LOCALIZED",
           "type": "cds.Association",
-          "target": "my.bookshop.Books_texts",
+          "target": "emcdemo.Books_texts",
           "on": [
             {
               "ref": [
@@ -631,7 +2664,7 @@
         }
       }
     },
-    "localized.CatalogService.Countries": {
+    "localized.emcdemo.Countries": {
       "kind": "entity",
       "@UI.Identification": [
         {
@@ -640,7 +2673,7 @@
       ],
       "@cds.autoexpose": true,
       "@cds.odata.valuelist": true,
-      "@cds.persistence.name": "LOCALIZED_CATALOGSERVICE_COUNTRIES",
+      "@cds.persistence.name": "LOCALIZED_EMCDEMO_COUNTRIES",
       "@cds.persistence.skip": "if-unused",
       "@odata.draft.enabled": false,
       "query": {
@@ -682,7 +2715,7 @@
           "cardinality": {
             "max": "*"
           },
-          "target": "sap.common.Countries_texts",
+          "target": "emcdemo.Countries_texts",
           "on": [
             {
               "ref": [
@@ -701,7 +2734,7 @@
         "localized": {
           "@cds.persistence.name": "LOCALIZED",
           "type": "cds.Association",
-          "target": "sap.common.Countries_texts",
+          "target": "emcdemo.Countries_texts",
           "on": [
             {
               "ref": [
@@ -975,7 +3008,6 @@
             "=": "$now"
           },
           "@cds.persistence.name": "MODIFIEDAT",
-          "@odata.etag": true,
           "@odata.on.update": {
             "#": "now"
           },
@@ -1458,7 +3490,7 @@
           "@cds.persistence.name": "CODE",
           "key": true,
           "type": "cds.String",
-          "length": 5
+          "length": 14
         },
         "texts": {
           "@cds.persistence.name": "TEXTS",
@@ -1530,7 +3562,6 @@
             "=": "$now"
           },
           "@cds.persistence.name": "MODIFIEDAT",
-          "@odata.etag": true,
           "@odata.on.update": {
             "#": "now"
           },
@@ -1754,7 +3785,6 @@
             "=": "$now"
           },
           "@cds.persistence.name": "MODIFIEDAT",
-          "@odata.etag": true,
           "@odata.on.update": {
             "#": "now"
           },
@@ -2185,7 +4215,7 @@
           "@cds.persistence.name": "CODE",
           "key": true,
           "type": "cds.String",
-          "length": 5
+          "length": 14
         },
         "texts": {
           "@cds.persistence.name": "TEXTS",
@@ -2275,7 +4305,7 @@
           "@cds.persistence.name": "CODE",
           "key": true,
           "type": "cds.String",
-          "length": 5
+          "length": 14
         }
       }
     },
@@ -2300,7 +4330,7 @@
     "csn": "1.0"
   },
   "meta": {
-    "creator": "CDS Compiler v1.17.2"
+    "creator": "CDS Compiler v1.18.2"
   },
   "$version": "1.0",
   "@sql_mapping": "plain"

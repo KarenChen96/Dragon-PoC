@@ -10,39 +10,40 @@
     <edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
   </edmx:Reference>
   <edmx:DataServices m:DataServiceVersion="2.0">
-    <Schema Namespace="CatalogService" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+    <Schema Namespace="emcdemo" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
       <EntityContainer Name="EntityContainer" m:IsDefaultEntityContainer="true">
-        <EntitySet Name="Authors" EntityType="CatalogService.Authors"/>
-        <EntitySet Name="Books" EntityType="CatalogService.Books"/>
-        <EntitySet Name="Books_texts" EntityType="CatalogService.Books_texts"/>
-        <EntitySet Name="Countries" EntityType="CatalogService.Countries"/>
-        <EntitySet Name="Countries_texts" EntityType="CatalogService.Countries_texts"/>
-        <EntitySet Name="Orders" EntityType="CatalogService.Orders"/>
-        <AssociationSet Name="Books_author" Association="CatalogService.Books_author">
+        <EntitySet Name="Authors" EntityType="emcdemo.Authors"/>
+        <EntitySet Name="Books" EntityType="emcdemo.Books"/>
+        <EntitySet Name="Books_texts" EntityType="emcdemo.Books_texts"/>
+        <EntitySet Name="Countries" EntityType="emcdemo.Countries"/>
+        <EntitySet Name="Countries_texts" EntityType="emcdemo.Countries_texts"/>
+        <EntitySet Name="Orders" EntityType="emcdemo.Orders"/>
+        <EntitySet Name="ProjectsRead" EntityType="emcdemo.ProjectsRead"/>
+        <AssociationSet Name="Books_author" Association="emcdemo.Books_author">
           <End Role="Books" EntitySet="Books"/>
           <End Role="Authors" EntitySet="Authors"/>
         </AssociationSet>
-        <AssociationSet Name="Books_texts_1" Association="CatalogService.Books_texts_1">
+        <AssociationSet Name="Books_texts_1" Association="emcdemo.Books_texts_1">
           <End Role="Books" EntitySet="Books"/>
           <End Role="Books_texts" EntitySet="Books_texts"/>
         </AssociationSet>
-        <AssociationSet Name="Books_localized" Association="CatalogService.Books_localized">
+        <AssociationSet Name="Books_localized" Association="emcdemo.Books_localized">
           <End Role="Books" EntitySet="Books"/>
           <End Role="Books_texts" EntitySet="Books_texts"/>
         </AssociationSet>
-        <AssociationSet Name="Countries_texts_1" Association="CatalogService.Countries_texts_1">
+        <AssociationSet Name="Countries_texts_1" Association="emcdemo.Countries_texts_1">
           <End Role="Countries" EntitySet="Countries"/>
           <End Role="Countries_texts" EntitySet="Countries_texts"/>
         </AssociationSet>
-        <AssociationSet Name="Countries_localized" Association="CatalogService.Countries_localized">
+        <AssociationSet Name="Countries_localized" Association="emcdemo.Countries_localized">
           <End Role="Countries" EntitySet="Countries"/>
           <End Role="Countries_texts" EntitySet="Countries_texts"/>
         </AssociationSet>
-        <AssociationSet Name="Orders_book" Association="CatalogService.Orders_book">
+        <AssociationSet Name="Orders_book" Association="emcdemo.Orders_book">
           <End Role="Orders" EntitySet="Orders"/>
           <End Role="Books" EntitySet="Books"/>
         </AssociationSet>
-        <AssociationSet Name="Orders_country" Association="CatalogService.Orders_country">
+        <AssociationSet Name="Orders_country" Association="emcdemo.Orders_country">
           <End Role="Orders" EntitySet="Orders"/>
           <End Role="Countries" EntitySet="Countries"/>
         </AssociationSet>
@@ -53,7 +54,7 @@
         </Key>
         <Property Name="ID" Type="Edm.Int32" Nullable="false"/>
         <Property Name="name" Type="Edm.String"/>
-        <NavigationProperty Name="books" Relationship="CatalogService.Books_author" FromRole="Authors" ToRole="Books"/>
+        <NavigationProperty Name="books" Relationship="emcdemo.Books_author" FromRole="Authors" ToRole="Books"/>
       </EntityType>
       <EntityType Name="Books">
         <Key>
@@ -61,10 +62,10 @@
         </Key>
         <Property Name="ID" Type="Edm.Int32" Nullable="false"/>
         <Property Name="title" Type="Edm.String"/>
-        <NavigationProperty Name="author" Relationship="CatalogService.Books_author" FromRole="Books" ToRole="Authors"/>
+        <NavigationProperty Name="author" Relationship="emcdemo.Books_author" FromRole="Books" ToRole="Authors"/>
         <Property Name="stock" Type="Edm.Int32"/>
-        <NavigationProperty Name="texts" Relationship="CatalogService.Books_texts_1" FromRole="Books" ToRole="Books_texts"/>
-        <NavigationProperty Name="localized" Relationship="CatalogService.Books_localized" FromRole="Books" ToRole="Books_texts"/>
+        <NavigationProperty Name="texts" Relationship="emcdemo.Books_texts_1" FromRole="Books" ToRole="Books_texts"/>
+        <NavigationProperty Name="localized" Relationship="emcdemo.Books_localized" FromRole="Books" ToRole="Books_texts"/>
         <Property Name="author_ID" Type="Edm.Int32"/>
       </EntityType>
       <EntityType Name="Books_texts">
@@ -83,8 +84,8 @@
         <Property Name="name" Type="Edm.String" MaxLength="255"/>
         <Property Name="descr" Type="Edm.String" MaxLength="1000"/>
         <Property Name="code" Type="Edm.String" MaxLength="3" Nullable="false"/>
-        <NavigationProperty Name="texts" Relationship="CatalogService.Countries_texts_1" FromRole="Countries" ToRole="Countries_texts"/>
-        <NavigationProperty Name="localized" Relationship="CatalogService.Countries_localized" FromRole="Countries" ToRole="Countries_texts"/>
+        <NavigationProperty Name="texts" Relationship="emcdemo.Countries_texts_1" FromRole="Countries" ToRole="Countries_texts"/>
+        <NavigationProperty Name="localized" Relationship="emcdemo.Countries_localized" FromRole="Countries" ToRole="Countries_texts"/>
       </EntityType>
       <EntityType Name="Countries_texts">
         <Key>
@@ -100,20 +101,55 @@
         <Key>
           <PropertyRef Name="ID"/>
         </Key>
-        <Property Name="modifiedAt" Type="Edm.DateTimeOffset" ConcurrencyMode="Fixed"/>
+        <Property Name="modifiedAt" Type="Edm.DateTimeOffset"/>
         <Property Name="createdAt" Type="Edm.DateTimeOffset"/>
         <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
         <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
         <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
-        <NavigationProperty Name="book" Relationship="CatalogService.Orders_book" FromRole="Orders" ToRole="Books"/>
-        <NavigationProperty Name="country" Relationship="CatalogService.Orders_country" FromRole="Orders" ToRole="Countries"/>
+        <NavigationProperty Name="book" Relationship="emcdemo.Orders_book" FromRole="Orders" ToRole="Books"/>
+        <NavigationProperty Name="country" Relationship="emcdemo.Orders_country" FromRole="Orders" ToRole="Countries"/>
         <Property Name="amount" Type="Edm.Int32"/>
         <Property Name="book_ID" Type="Edm.Int32"/>
         <Property Name="country_code" Type="Edm.String" MaxLength="3"/>
       </EntityType>
+      <EntityType Name="ProjectsRead">
+        <Key>
+          <PropertyRef Name="ProjectID"/>
+        </Key>
+        <Property Name="ProjectID" Type="Edm.String" MaxLength="40" Nullable="false"/>
+        <Property Name="RestrictTimePosting" Type="Edm.String" MaxLength="1"/>
+        <Property Name="ChangedBy" Type="Edm.String" MaxLength="12"/>
+        <Property Name="ProfitCenter" Type="Edm.String" MaxLength="10"/>
+        <Property Name="ChangedOn" Type="Edm.DateTimeOffset" Precision="7"/>
+        <Property Name="ProfitCenterName" Type="Edm.String" MaxLength="20"/>
+        <Property Name="ProjectName" Type="Edm.String" MaxLength="40"/>
+        <Property Name="ProjectStage" Type="Edm.String" MaxLength="4"/>
+        <Property Name="StageDesc" Type="Edm.String" MaxLength="40"/>
+        <Property Name="StartDate" Type="Edm.DateTimeOffset" Precision="7"/>
+        <Property Name="EndDate" Type="Edm.DateTimeOffset" Precision="7"/>
+        <Property Name="Customer" Type="Edm.String" MaxLength="10"/>
+        <Property Name="CustomerName" Type="Edm.String" MaxLength="166"/>
+        <Property Name="ProjManagerId" Type="Edm.String" MaxLength="8"/>
+        <Property Name="ProjManagerName" Type="Edm.String" MaxLength="80"/>
+        <Property Name="ProjAccountantId" Type="Edm.String" MaxLength="8"/>
+        <Property Name="ProjAccountantName" Type="Edm.String" MaxLength="80"/>
+        <Property Name="ProjControllerId" Type="Edm.String" MaxLength="8"/>
+        <Property Name="ProjControllerName" Type="Edm.String" MaxLength="80"/>
+        <Property Name="ProjPartnerId" Type="Edm.String" MaxLength="8"/>
+        <Property Name="ProjPartnerName" Type="Edm.String" MaxLength="80"/>
+        <Property Name="CostCenter" Type="Edm.String" MaxLength="10"/>
+        <Property Name="CostCenterName" Type="Edm.String" MaxLength="20"/>
+        <Property Name="ProjectCategory" Type="Edm.String" MaxLength="1"/>
+        <Property Name="Currency" Type="Edm.String" MaxLength="5"/>
+        <Property Name="Currencyname" Type="Edm.String" MaxLength="40"/>
+        <Property Name="OrgID" Type="Edm.String" MaxLength="5"/>
+        <Property Name="OrgDesc" Type="Edm.String" MaxLength="40"/>
+        <Property Name="Confidential" Type="Edm.String" MaxLength="1"/>
+        <Property Name="WorkpackageSet_WorkPackageID" Type="Edm.String" MaxLength="50"/>
+      </EntityType>
       <Association Name="Books_author">
-        <End Role="Books" Type="CatalogService.Books" Multiplicity="*"/>
-        <End Role="Authors" Type="CatalogService.Authors" Multiplicity="0..1"/>
+        <End Role="Books" Type="emcdemo.Books" Multiplicity="*"/>
+        <End Role="Authors" Type="emcdemo.Authors" Multiplicity="0..1"/>
         <ReferentialConstraint>
           <Principal Role="Authors">
             <PropertyRef Name="ID"/>
@@ -124,14 +160,14 @@
         </ReferentialConstraint>
       </Association>
       <Association Name="Books_texts_1">
-        <End Role="Books" Type="CatalogService.Books" Multiplicity="*"/>
-        <End Role="Books_texts" Type="CatalogService.Books_texts" Multiplicity="*">
+        <End Role="Books" Type="emcdemo.Books" Multiplicity="*"/>
+        <End Role="Books_texts" Type="emcdemo.Books_texts" Multiplicity="*">
           <OnDelete Action="Cascade"/>
         </End>
       </Association>
       <Association Name="Books_localized">
-        <End Role="Books" Type="CatalogService.Books" Multiplicity="*"/>
-        <End Role="Books_texts" Type="CatalogService.Books_texts" Multiplicity="0..1"/>
+        <End Role="Books" Type="emcdemo.Books" Multiplicity="*"/>
+        <End Role="Books_texts" Type="emcdemo.Books_texts" Multiplicity="0..1"/>
         <ReferentialConstraint>
           <Principal Role="Books_texts">
             <PropertyRef Name="ID"/>
@@ -142,14 +178,14 @@
         </ReferentialConstraint>
       </Association>
       <Association Name="Countries_texts_1">
-        <End Role="Countries" Type="CatalogService.Countries" Multiplicity="*"/>
-        <End Role="Countries_texts" Type="CatalogService.Countries_texts" Multiplicity="*">
+        <End Role="Countries" Type="emcdemo.Countries" Multiplicity="*"/>
+        <End Role="Countries_texts" Type="emcdemo.Countries_texts" Multiplicity="*">
           <OnDelete Action="Cascade"/>
         </End>
       </Association>
       <Association Name="Countries_localized">
-        <End Role="Countries" Type="CatalogService.Countries" Multiplicity="*"/>
-        <End Role="Countries_texts" Type="CatalogService.Countries_texts" Multiplicity="0..1"/>
+        <End Role="Countries" Type="emcdemo.Countries" Multiplicity="*"/>
+        <End Role="Countries_texts" Type="emcdemo.Countries_texts" Multiplicity="0..1"/>
         <ReferentialConstraint>
           <Principal Role="Countries_texts">
             <PropertyRef Name="code"/>
@@ -160,8 +196,8 @@
         </ReferentialConstraint>
       </Association>
       <Association Name="Orders_book">
-        <End Role="Orders" Type="CatalogService.Orders" Multiplicity="*"/>
-        <End Role="Books" Type="CatalogService.Books" Multiplicity="0..1"/>
+        <End Role="Orders" Type="emcdemo.Orders" Multiplicity="*"/>
+        <End Role="Books" Type="emcdemo.Books" Multiplicity="0..1"/>
         <ReferentialConstraint>
           <Principal Role="Books">
             <PropertyRef Name="ID"/>
@@ -172,8 +208,8 @@
         </ReferentialConstraint>
       </Association>
       <Association Name="Orders_country">
-        <End Role="Orders" Type="CatalogService.Orders" Multiplicity="*"/>
-        <End Role="Countries" Type="CatalogService.Countries" Multiplicity="0..1"/>
+        <End Role="Orders" Type="emcdemo.Orders" Multiplicity="*"/>
+        <End Role="Countries" Type="emcdemo.Countries" Multiplicity="0..1"/>
         <ReferentialConstraint>
           <Principal Role="Countries">
             <PropertyRef Name="code"/>
@@ -183,56 +219,56 @@
           </Dependent>
         </ReferentialConstraint>
       </Association>
-      <Annotations Target="CatalogService.Countries" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <Annotations Target="emcdemo.Countries" xmlns="http://docs.oasis-open.org/odata/ns/edm">
         <Annotation Term="UI.Identification">
           <Collection>
             <Path>name</Path>
           </Collection>
         </Annotation>
       </Annotations>
-      <Annotations Target="CatalogService.Countries/name" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <Annotations Target="emcdemo.Countries/name" xmlns="http://docs.oasis-open.org/odata/ns/edm">
         <Annotation Term="Common.Label" String="Name"/>
       </Annotations>
-      <Annotations Target="CatalogService.Countries/descr" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <Annotations Target="emcdemo.Countries/descr" xmlns="http://docs.oasis-open.org/odata/ns/edm">
         <Annotation Term="Common.Label" String="Description"/>
       </Annotations>
-      <Annotations Target="CatalogService.Countries/code" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <Annotations Target="emcdemo.Countries/code" xmlns="http://docs.oasis-open.org/odata/ns/edm">
         <Annotation Term="Common.Label" String="Country Code"/>
       </Annotations>
-      <Annotations Target="CatalogService.Countries_texts/name" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <Annotations Target="emcdemo.Countries_texts/name" xmlns="http://docs.oasis-open.org/odata/ns/edm">
         <Annotation Term="Common.Label" String="Name"/>
       </Annotations>
-      <Annotations Target="CatalogService.Countries_texts/descr" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <Annotations Target="emcdemo.Countries_texts/descr" xmlns="http://docs.oasis-open.org/odata/ns/edm">
         <Annotation Term="Common.Label" String="Description"/>
       </Annotations>
-      <Annotations Target="CatalogService.Countries_texts/code" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <Annotations Target="emcdemo.Countries_texts/code" xmlns="http://docs.oasis-open.org/odata/ns/edm">
         <Annotation Term="Common.Label" String="Country Code"/>
       </Annotations>
-      <Annotations Target="CatalogService.Orders/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <Annotations Target="emcdemo.Orders/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
         <Annotation Term="Common.Label" String="Changed At"/>
         <Annotation Term="Core.Computed" Bool="true"/>
         <Annotation Term="Core.Immutable" Bool="true"/>
         <Annotation Term="UI.HiddenFilter" Bool="true"/>
       </Annotations>
-      <Annotations Target="CatalogService.Orders/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <Annotations Target="emcdemo.Orders/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
         <Annotation Term="Common.Label" String="Created At"/>
         <Annotation Term="Core.Computed" Bool="true"/>
         <Annotation Term="Core.Immutable" Bool="true"/>
         <Annotation Term="UI.HiddenFilter" Bool="true"/>
       </Annotations>
-      <Annotations Target="CatalogService.Orders/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <Annotations Target="emcdemo.Orders/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
         <Annotation Term="Common.Label" String="Created By"/>
         <Annotation Term="Core.Computed" Bool="true"/>
         <Annotation Term="Core.Immutable" Bool="true"/>
         <Annotation Term="UI.HiddenFilter" Bool="true"/>
       </Annotations>
-      <Annotations Target="CatalogService.Orders/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <Annotations Target="emcdemo.Orders/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
         <Annotation Term="Common.Label" String="Changed By"/>
         <Annotation Term="Core.Computed" Bool="true"/>
         <Annotation Term="Core.Immutable" Bool="true"/>
         <Annotation Term="UI.HiddenFilter" Bool="true"/>
       </Annotations>
-      <Annotations Target="CatalogService.Orders/country" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <Annotations Target="emcdemo.Orders/country" xmlns="http://docs.oasis-open.org/odata/ns/edm">
         <Annotation Term="Common.Label" String="Country"/>
         <Annotation Term="Common.ValueList">
           <Record Type="Common.ValueListType">
@@ -252,7 +288,7 @@
           </Record>
         </Annotation>
       </Annotations>
-      <Annotations Target="CatalogService.Orders/country_code" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <Annotations Target="emcdemo.Orders/country_code" xmlns="http://docs.oasis-open.org/odata/ns/edm">
         <Annotation Term="Common.Label" String="Country"/>
         <Annotation Term="Common.ValueList">
           <Record Type="Common.ValueListType">

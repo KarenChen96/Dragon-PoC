@@ -1,5 +1,6 @@
 package eppm.cf.emcdemo.events.config;
 
+import com.sap.cloud.servicesdk.xbem.connector.sapcp.MessagingServiceInfoProperties;
 import com.sap.cloud.servicesdk.xbem.core.MessagingService;
 import com.sap.cloud.servicesdk.xbem.core.MessagingServiceFactory;
 import com.sap.cloud.servicesdk.xbem.core.exception.MessagingException;
@@ -8,25 +9,30 @@ import com.sap.cloud.servicesdk.xbem.extension.sapcp.jms.MessagingServiceJmsConn
 import com.sap.cloud.servicesdk.xbem.extension.sapcp.jms.MessagingServiceJmsSettings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.Cloud;
 import org.springframework.cloud.CloudFactory;
 import org.springframework.cloud.service.ServiceConnectorConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.jms.annotation.EnableJms;
 import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
+
 import javax.jms.Session;
 
 
 @EnableJms
 @Configuration
+@Profile("cloud")
 public class EmcDemoMsgServiceConfig {
 
     private static final Logger log = LoggerFactory.getLogger(EmcDemoMsgServiceConfig.class);
 
+
     @Bean
     public MessagingServiceFactory getMessagingServiceFactory() {
-        ServiceConnectorConfig config = null;
+        ServiceConnectorConfig config = MessagingServiceInfoProperties.init().finish();
         Cloud cloud = new CloudFactory().getCloud();
         // get the MessagingService via the service connector
         MessagingService messagingService = cloud.getSingletonServiceConnector(MessagingService.class, config);
@@ -38,6 +44,7 @@ public class EmcDemoMsgServiceConfig {
 
 
     @Bean
+    @Autowired
     public MessagingServiceJmsConnectionFactory getMessagingServiceJmsConnectionFactory(MessagingServiceFactory messagingServiceFactory) {
         try {
             /*

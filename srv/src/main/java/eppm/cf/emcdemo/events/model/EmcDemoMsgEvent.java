@@ -2,12 +2,12 @@ package eppm.cf.emcdemo.events.model;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
+import org.springframework.cloud.cloudfoundry.com.fasterxml.jackson.annotation.JsonSubTypes;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Pattern;
@@ -46,7 +46,6 @@ class EmcDemoMsgEvent<T> {
 
     /**
 	 * The name of @{@link JsonProperty} to be used as type id for
-	 * {@link EmcDemoMsgEventTypeIdResolver}.
 	* <p>
 	 * The property value is NOT deserialized by JSON, this is why this class
 	 * doesn't contain the event type property.
