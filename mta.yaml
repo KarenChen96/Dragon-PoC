@@ -1,40 +1,51 @@
-_schema-version: 2.0.0
+_schema-version: '2.0.0'
 ID: emcdemo
 version: 1.0.0
 modules:
-  - name: emcdemo-srv
+  - name: i517845-emcdemo-srv
     type: java
     path: srv
+    build-parameters:
+      # builder: maven
+      # maven-opts:
+      #   command: [ clean, verify ]
+      #   profiles:
+      #     - buildProfile
+      #   defines:
+      #     skipTests: true
+      build-result: target/*.jar
     parameters:
-      memory: 512M
+      memory: 1024M
     provides:
       - name: srv_api
         properties:
           url: ${default-url}
     requires:
-      - name: emcdemo-db-hdi-container
+      - name: i517845-emcdemo-db-hdi-container
         properties:
           JBP_CONFIG_RESOURCE_CONFIGURATION: '[tomcat/webapps/ROOT/META-INF/context.xml:
             {"service_name_for_DefaultDB" : "~{hdi-container-name}"}]'
-      - name: emcdemo-uaa
-  - name: emcdemo-db
+      - name: i517845-emcdemo-uaa
+  - name: i517845-emcdemo-db
     type: hdb
     path: db
     parameters:
       memory: 256M
       disk-quota: 256M
     requires:
-      - name: emcdemo-db-hdi-container
+      - name: i517845-emcdemo-db-hdi-container
+        properties:
+          db_service_instance_name: ~{hdi-container-name}
 resources:
-  - name: emcdemo-uaa
+  - name: i517845-emcdemo-uaa
     type: org.cloudfoundry.managed-service
     parameters:
-      service-plan: default
+      service-plan: application
       service: xsuaa
       config:
         xsappname: emcdemo-${space}
         tenant-mode: dedicated
-  - name: emcdemo-db-hdi-container
+  - name: i517845-emcdemo-db-hdi-container
     type: com.sap.xs.hdi-container
     properties:
       hdi-container-name: ${service-name}
