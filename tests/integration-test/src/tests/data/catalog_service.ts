@@ -1,13 +1,18 @@
-export interface ICatalogService {
-  d: {
-    EntitySets: String[];
-  };
+export type ICatalogService = ODataService<keyNames.EntitySets, string[]>;
+
+export type IProjectEEQuery = ODataService<keyNames.results, IProjectEE[]>;
+
+const enum keyNames {
+  EntitySets = 'EntitySets',
+  results = 'results',
 }
 
-export interface IProjectEEQuery {
-  d: {
-    results: IProjectEE[];
-  }
+interface MapKeys<T> {
+  [key: string]: T;
+}
+
+interface ODataService<K extends keyNames, V> {
+  d: Pick<MapKeys<V>, K>;
 }
 
 export interface IProjectEE {
