@@ -36,6 +36,25 @@ modules:
       - name: i517845-emcdemo-db-hdi-container
         properties:
           db_service_instance_name: ~{hdi-container-name}
+
+  - name: app
+    type: html5
+    path: app
+    parameters:
+       disk-quota: 256M
+       memory: 256M
+    build-parameters:
+       builder: grunt
+    requires:
+     - name: srv_api
+       group: destinations
+       properties:
+          forwardAuthToken: true
+          strictSSL: false
+          name: srv_api
+          url: ~{url}
+     - name: uaa_emcdemo
+
 resources:
   - name: i517845-emcdemo-uaa
     type: org.cloudfoundry.managed-service
