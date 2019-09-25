@@ -1921,7 +1921,7 @@
     },
     "emcdemo": {
       "kind": "service",
-      "@source": "srv/cat-service.cds"
+      "@source": "srv\\cat-service.cds"
     },
     "emcdemo.Authors": {
       "kind": "entity",
